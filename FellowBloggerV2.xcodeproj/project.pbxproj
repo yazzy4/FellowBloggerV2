@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		242A782224078F2A06C4141D /* Pods_FellowBloggerV2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCE6A694E652021A8A6287AB /* Pods_FellowBloggerV2.framework */; };
 		910D1EE2223ABB790090B2BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910D1EE1223ABB790090B2BB /* AppDelegate.swift */; };
-		910D1EE4223ABB790090B2BB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910D1EE3223ABB790090B2BB /* ViewController.swift */; };
+		910D1EE4223ABB790090B2BB /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910D1EE3223ABB790090B2BB /* CreateAccountViewController.swift */; };
 		910D1EE7223ABB790090B2BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 910D1EE5223ABB790090B2BB /* Main.storyboard */; };
 		910D1EE9223ABB7A0090B2BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 910D1EE8223ABB7A0090B2BB /* Assets.xcassets */; };
 		910D1EEC223ABB7A0090B2BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 910D1EEA223ABB7A0090B2BB /* LaunchScreen.storyboard */; };
@@ -21,13 +21,15 @@
 		910D1F02223AC0B60090B2BB /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910D1F01223AC0B60090B2BB /* Date+Extension.swift */; };
 		910D1F04223AC0D40090B2BB /* String+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910D1F03223AC0D40090B2BB /* String+Date.swift */; };
 		910D1F06223AC2830090B2BB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 910D1F05223AC2810090B2BB /* GoogleService-Info.plist */; };
+		91AF07D8223AED1000E487B8 /* LoginView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91AF07D7223AED1000E487B8 /* LoginView.storyboard */; };
+		91AF07DA223AEEB400E487B8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AF07D9223AEEB400E487B8 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8A1C358F49EDEC3D060FB7DD /* Pods-FellowBloggerV2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FellowBloggerV2.debug.xcconfig"; path = "Target Support Files/Pods-FellowBloggerV2/Pods-FellowBloggerV2.debug.xcconfig"; sourceTree = "<group>"; };
 		910D1EDE223ABB790090B2BB /* FellowBloggerV2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FellowBloggerV2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		910D1EE1223ABB790090B2BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		910D1EE3223ABB790090B2BB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		910D1EE3223ABB790090B2BB /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		910D1EE6223ABB790090B2BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		910D1EE8223ABB7A0090B2BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		910D1EEB223ABB7A0090B2BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -40,6 +42,8 @@
 		910D1F01223AC0B60090B2BB /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		910D1F03223AC0D40090B2BB /* String+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Date.swift"; sourceTree = "<group>"; };
 		910D1F05223AC2810090B2BB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		91AF07D7223AED1000E487B8 /* LoginView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginView.storyboard; sourceTree = "<group>"; };
+		91AF07D9223AEEB400E487B8 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F1CBD6C7868235546C631AAD /* Pods-FellowBloggerV2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FellowBloggerV2.release.xcconfig"; path = "Target Support Files/Pods-FellowBloggerV2/Pods-FellowBloggerV2.release.xcconfig"; sourceTree = "<group>"; };
 		FCE6A694E652021A8A6287AB /* Pods_FellowBloggerV2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FellowBloggerV2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -90,7 +94,7 @@
 				910D1EF4223ABBAB0090B2BB /* Models */,
 				910D1EF3223ABB9D0090B2BB /* Firebase Services */,
 				910D1EE1223ABB790090B2BB /* AppDelegate.swift */,
-				910D1EE5223ABB790090B2BB /* Main.storyboard */,
+				91AF07D6223AECC700E487B8 /* Storyboards */,
 				910D1EE8223ABB7A0090B2BB /* Assets.xcassets */,
 				910D1EEA223ABB7A0090B2BB /* LaunchScreen.storyboard */,
 				910D1EED223ABB7A0090B2BB /* Info.plist */,
@@ -130,9 +134,27 @@
 		910D1EF6223ABBC50090B2BB /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				910D1EE3223ABB790090B2BB /* ViewController.swift */,
+				91AF07DB223AEF4200E487B8 /* Account Login Controllers */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		91AF07D6223AECC700E487B8 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				910D1EE5223ABB790090B2BB /* Main.storyboard */,
+				91AF07D7223AED1000E487B8 /* LoginView.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		91AF07DB223AEF4200E487B8 /* Account Login Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				91AF07D9223AEEB400E487B8 /* LoginViewController.swift */,
+				910D1EE3223ABB790090B2BB /* CreateAccountViewController.swift */,
+			);
+			path = "Account Login Controllers";
 			sourceTree = "<group>";
 		};
 		934069152261845F99D8E134 /* Pods */ = {
@@ -208,6 +230,7 @@
 				910D1F06223AC2830090B2BB /* GoogleService-Info.plist in Resources */,
 				910D1EE9223ABB7A0090B2BB /* Assets.xcassets in Resources */,
 				910D1EE7223ABB790090B2BB /* Main.storyboard in Resources */,
+				91AF07D8223AED1000E487B8 /* LoginView.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,8 +312,9 @@
 				910D1EF8223ABFD00090B2BB /* AuthService.swift in Sources */,
 				910D1EFA223ABFE60090B2BB /* DBService.swift in Sources */,
 				910D1F02223AC0B60090B2BB /* Date+Extension.swift in Sources */,
-				910D1EE4223ABB790090B2BB /* ViewController.swift in Sources */,
+				910D1EE4223ABB790090B2BB /* CreateAccountViewController.swift in Sources */,
 				910D1F04223AC0D40090B2BB /* String+Date.swift in Sources */,
+				91AF07DA223AEEB400E487B8 /* LoginViewController.swift in Sources */,
 				910D1EE2223ABB790090B2BB /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
