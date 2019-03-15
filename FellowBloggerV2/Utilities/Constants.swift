@@ -10,8 +10,8 @@
 import UIKit
 
 struct Constants {
-    static let DishDescriptionPlaceholder = "Looking forward to reading about your national dish....."
-    static let DishImagePath = "nationalDishImages/" // nationalDishImages/{userId}/{documentId-goes-here}
+    static let BlogDescriptionPlaceholder = "Looking forward to seeing pictures of your babies that I did not ask to see"
+    static let BlogImagePath = "nationalDishImages/" // nationalDishImages/{userId}/{documentId-goes-here}
     static let ProfileImagePath = "profileImages/" // profileImages/{userId}
-    static let DishCellHeight: CGFloat = 300.0
+    static let BlogCellHeight: CGFloat = 300.0
 }

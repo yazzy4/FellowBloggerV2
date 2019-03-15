@@ -34,8 +34,10 @@ class BloggerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
+        bloggerTableView.dataSource = self
+        bloggerTableView.delegate = self
+        bloggerTableView.register(UINib(nibName: "BlogCell", bundle: nil), forCellReuseIdentifier: "BlogCell")
+        fetchBlogs()
     }
     
     @objc private func fetchBlogs() {
@@ -85,20 +87,35 @@ extension BloggerViewController: UITableViewDataSource {
         cell.blogDescriptionLabel.text = blog.blogDescription
         cell.createdAtLabel.text = blog.createdDate
         cell.postImage.kf.indicatorType = .activity
-        cell.postImage.kf.setImage(with: URL(string: blog.imageURL), placeholder: #imageLiteral(resourceName: <#T##String#>))
-        
-
-//        fetchDishCreator(userId: dish.userId, cell: cell, dish: dish)
+        cell.postImage.kf.setImage(with: URL(string: blog.imageURL), placeholder: #imageLiteral(resourceName: "placeholder-image.png"))
+        fetchBlogCreator(userId: blog.bloggerId, cell: cell, blog: blog)
         return cell
     }
     
-//    private func fetchDishCreator(userId: String, cell: DishCell, dish: Dish) {
-//        DBService.fetchDishCreator(userId: userId) { (error, dishCreator) in
-//            if let error = error {
-//                print("failed to fetch dish creator with error: \(error.localizedDescription)")
-//            } else if let dishCreator = dishCreator {
-//                cell.displayNameLabel.text = "@" + dishCreator.displayName
-//            }
-//        }
-//    }
+    private func fetchBlogCreator(userId: String, cell: BlogCell, blog: Blog) {
+        DBService.fetchBlogCreator(userId: userId) { (error, blogger) in
+            if let error = error {
+                print("failed to fetch dish creator with error: \(error.localizedDescription)")
+            } else if let blogger = blogger {
+                cell.bloggerImage.kf.setImage(with: URL(string: "@" +  blogger.displayName))
+            }
+        }
+    }
 }
+extension BloggerViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return Constants.BlogCellHeight
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "Show Blog Details", sender: indexPath)
+    }
+}
+
+//extension BloggerViewController:  {
+//    func didSignOut(_ authservice: AuthService) {
+//        listener.remove()
+//        showLoginView()
+//    }
+//    func didSignOutWithError(_ authservice: AuthService, error: Error) {}
+//}

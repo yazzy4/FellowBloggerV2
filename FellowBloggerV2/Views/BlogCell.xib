@@ -62,7 +62,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="blogDescription" destination="Hwo-sm-Uuu" id="2XI-w4-l0a"/>
+                <outlet property="blogDescriptionLabel" destination="Hwo-sm-Uuu" id="yZD-IC-Yd3"/>
                 <outlet property="bloggerImage" destination="Ukb-d2-xOj" id="3QS-1f-ccJ"/>
                 <outlet property="createdAtLabel" destination="Nl0-0N-zx6" id="deV-n9-oT5"/>
                 <outlet property="postImage" destination="Ozq-l8-xfm" id="lw4-ko-vJp"/>

@@ -38,6 +38,7 @@
 		91AF07FC223C1C6400E487B8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AF07FB223C1C6400E487B8 /* Constants.swift */; };
 		91AF07FE223C232E00E487B8 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AF07FD223C232E00E487B8 /* SearchViewController.swift */; };
 		91AF0800223C280600E487B8 /* BlogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AF07FF223C280600E487B8 /* BlogCell.swift */; };
+		91AF0802223C57CC00E487B8 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AF0801223C57CC00E487B8 /* UIViewControllerExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		91AF07FB223C1C6400E487B8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		91AF07FD223C232E00E487B8 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		91AF07FF223C280600E487B8 /* BlogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogCell.swift; sourceTree = "<group>"; };
+		91AF0801223C57CC00E487B8 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		F1CBD6C7868235546C631AAD /* Pods-FellowBloggerV2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FellowBloggerV2.release.xcconfig"; path = "Target Support Files/Pods-FellowBloggerV2/Pods-FellowBloggerV2.release.xcconfig"; sourceTree = "<group>"; };
 		FCE6A694E652021A8A6287AB /* Pods_FellowBloggerV2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FellowBloggerV2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -158,6 +160,7 @@
 				910D1F01223AC0B60090B2BB /* Date+Extension.swift */,
 				910D1F03223AC0D40090B2BB /* String+Date.swift */,
 				91AF07DC223BF08F00E487B8 /* UIAlertExtentions.swift */,
+				91AF0801223C57CC00E487B8 /* UIViewControllerExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 				91AF07DA223AEEB400E487B8 /* LoginViewController.swift in Sources */,
 				91AF07E0223BFAD600E487B8 /* BloggersTabBarController.swift in Sources */,
 				91AF07E4223C129B00E487B8 /* BloggerViewController.swift in Sources */,
+				91AF0802223C57CC00E487B8 /* UIViewControllerExtension.swift in Sources */,
 				91AF07E8223C12CD00E487B8 /* EditPostViewController.swift in Sources */,
 				91AF07F7223C1C0500E487B8 /* ProfileView.swift in Sources */,
 				910D1EE2223ABB790090B2BB /* AppDelegate.swift in Sources */,
