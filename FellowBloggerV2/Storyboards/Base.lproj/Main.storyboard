@@ -223,10 +223,36 @@
                     <view key="view" contentMode="scaleToFill" id="tpS-FU-fOz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="i9s-ks-JL8">
+                                <rect key="frame" x="8" y="74" width="359" height="210"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="210" id="xm4-H4-tna"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-image" translatesAutoresizingMaskIntoConstraints="NO" id="XYq-v4-rjl">
+                                <rect key="frame" x="8" y="295" width="359" height="364"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="i9s-ks-JL8" firstAttribute="leading" secondItem="hdd-Dq-tcL" secondAttribute="leading" constant="8" id="1t8-sJ-TJ4"/>
+                            <constraint firstItem="hdd-Dq-tcL" firstAttribute="bottom" secondItem="XYq-v4-rjl" secondAttribute="bottom" constant="8" id="Afd-ns-uih"/>
+                            <constraint firstItem="hdd-Dq-tcL" firstAttribute="trailing" secondItem="XYq-v4-rjl" secondAttribute="trailing" constant="8" id="MVa-QH-Oil"/>
+                            <constraint firstItem="XYq-v4-rjl" firstAttribute="leading" secondItem="hdd-Dq-tcL" secondAttribute="leading" constant="8" id="QNG-TF-feS"/>
+                            <constraint firstItem="i9s-ks-JL8" firstAttribute="top" secondItem="hdd-Dq-tcL" secondAttribute="top" constant="10" id="bF6-mV-h2t"/>
+                            <constraint firstItem="hdd-Dq-tcL" firstAttribute="trailing" secondItem="i9s-ks-JL8" secondAttribute="trailing" constant="8" id="hBz-7h-JOH"/>
+                            <constraint firstItem="XYq-v4-rjl" firstAttribute="top" secondItem="i9s-ks-JL8" secondAttribute="bottom" constant="11" id="u9q-B5-nvd"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="hdd-Dq-tcL"/>
                     </view>
-                    <navigationItem key="navigationItem" id="xrd-RS-cjn"/>
+                    <navigationItem key="navigationItem" id="xrd-RS-cjn">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="w19-qd-lJ5"/>
+                        <barButtonItem key="rightBarButtonItem" title="Post" id="5Ic-pb-Zxa"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6cv-va-IGw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -359,6 +385,9 @@
             <point key="canvasLocation" x="1935" y="-2514"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="placeholder-image" width="512" height="512"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="5E4-a8-Z3f"/>
     </inferredMetricsTieBreakers>
