@@ -45,7 +45,7 @@
             </objects>
             <point key="canvasLocation" x="779" y="-1671"/>
         </scene>
-        <!--Profile View Controller-->
+        <!--Profile-->
         <scene sceneID="Jek-LO-PoI">
             <objects>
                 <viewController id="Ob3-g8-H99" customClass="ProfileViewController" customModule="FellowBloggerV2" customModuleProvider="target" sceneMemberID="viewController">
@@ -77,9 +77,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hEW-Xh-YNQ"/>
                     </view>
-                    <navigationItem key="navigationItem" id="17Z-tk-8dX"/>
+                    <navigationItem key="navigationItem" title="Profile" id="17Z-tk-8dX"/>
                     <connections>
                         <segue destination="CjQ-IQ-8sO" kind="show" id="gKg-ds-bRn"/>
+                        <segue destination="A0K-Ya-Lam" kind="presentation" id="e8s-QR-1eg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cnt-gg-Svf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -103,7 +104,7 @@
             </objects>
             <point key="canvasLocation" x="837" y="50"/>
         </scene>
-        <!--Search View Controller-->
+        <!--Search-->
         <scene sceneID="78A-ao-kfP">
             <objects>
                 <viewController id="MJc-s2-eTv" customClass="SearchViewController" customModule="FellowBloggerV2" customModuleProvider="target" sceneMemberID="viewController">
@@ -119,7 +120,7 @@
                                 <rect key="frame" x="0.0" y="120" width="375" height="498"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="zUK-01-239">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="zUK-01-239" customClass="BlogCell" customModule="FellowBloggerV2" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zUK-01-239" id="m1p-rs-UmE">
@@ -142,7 +143,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kN9-L5-umI"/>
                     </view>
-                    <navigationItem key="navigationItem" id="et3-Bh-MTe"/>
+                    <navigationItem key="navigationItem" title="Search" id="et3-Bh-MTe"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ype-bl-DsJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -207,6 +208,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="bloggerTableView" destination="GbU-Z8-U4e" id="dpU-qE-eHO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QvC-UW-WTT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -246,7 +250,7 @@
             </objects>
             <point key="canvasLocation" x="2938" y="-531"/>
         </scene>
-        <!--Edit Post View Controller-->
+        <!--Edit Profile-->
         <scene sceneID="RDM-8i-S5t">
             <objects>
                 <viewController id="rdw-41-ip1" customClass="EditPostViewController" customModule="FellowBloggerV2" customModuleProvider="target" sceneMemberID="viewController">
@@ -256,11 +260,49 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="42z-G1-yMU"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Qbx-lo-Fcu"/>
+                    <navigationItem key="navigationItem" title="Edit Profile" id="Qbx-lo-Fcu"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zna-vT-UO7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4537" y="-531"/>
+        </scene>
+        <!--Edit Profile-->
+        <scene sceneID="jXh-AY-ciM">
+            <objects>
+                <viewController id="Rx3-dl-t88" customClass="EditProfileViewController" customModule="FellowBloggerV2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eJx-6a-QpG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kfh-CJ-R1t">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="WMi-Gc-aon">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WMi-Gc-aon" id="JmU-5L-NE7">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="kfh-CJ-R1t" firstAttribute="top" secondItem="qzF-CQ-FSA" secondAttribute="top" id="Fee-ay-m1r"/>
+                            <constraint firstItem="qzF-CQ-FSA" firstAttribute="bottom" secondItem="kfh-CJ-R1t" secondAttribute="bottom" id="fd8-FL-6kY"/>
+                            <constraint firstItem="qzF-CQ-FSA" firstAttribute="trailing" secondItem="kfh-CJ-R1t" secondAttribute="trailing" id="n4N-lU-NGY"/>
+                            <constraint firstItem="kfh-CJ-R1t" firstAttribute="leading" secondItem="qzF-CQ-FSA" secondAttribute="leading" id="rte-if-PPg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="qzF-CQ-FSA"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Edit Profile" id="SIe-TI-CJc"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S0w-Ci-EMl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3119" y="-2225"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="b3Y-Y4-Ie9">
@@ -298,8 +340,26 @@
             </objects>
             <point key="canvasLocation" x="3735" y="-531"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ZxC-lO-hGy">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="A0K-Ya-Lam" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="MrA-FX-MQx">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Rx3-dl-t88" kind="relationship" relationship="rootViewController" id="h9B-1K-zfg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="89x-Jb-QQc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1935" y="-2514"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="gKg-ds-bRn"/>
+        <segue reference="5E4-a8-Z3f"/>
     </inferredMetricsTieBreakers>
 </document>
