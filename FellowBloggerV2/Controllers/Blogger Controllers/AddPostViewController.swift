@@ -95,12 +95,12 @@ class AddPostViewController: UIViewController {
                                             if let error = error {
                                                 self?.showAlert(title: "Posting Blog Error", message: error.localizedDescription)
                                             } else {
-                                                self?.showAlert(title: "Dish Posted", message: "Looking forward to checking out your national dish") { action in
+                                                self?.showAlert(title: "Blog Posted", message: "Looking forward to all of your valuable insights") { action in
                                                     self?.dismiss(animated: true)
                                                 }
                                             }
                                         }
-                        self?.navigationItem.rightBarButtonItem?.isEnabled = true
+            self?.navigationItem.rightBarButtonItem?.isEnabled = true
             }
         }
     }

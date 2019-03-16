@@ -13,7 +13,7 @@ import Firebase
 class BloggerViewController: UIViewController {
     
     @IBOutlet weak var bloggerTableView: UITableView!
-    private var blogs = [Blog]() {
+    public var blogs = [Blog]() {
         didSet{
             DispatchQueue.main.async {
                 self.bloggerTableView.reloadData()
@@ -65,9 +65,9 @@ class BloggerViewController: UIViewController {
                 let blogDVC = segue.destination as? PostDetailViewController else {
                     fatalError("cannot segue to dishDVC")
             }
-            let blog = blogs[indexPath.row].bloggerId
-//            blogDVC.displayName = cell.displayNameLabel.text
-//            blogDVC = blog
+            let blog = blogs[indexPath.row]
+            blogDVC.displayName = cell.blogDescriptionLabel.text
+            blogDVC.blog = blog
 
         }
     }
