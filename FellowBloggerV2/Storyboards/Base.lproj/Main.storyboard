@@ -216,7 +216,7 @@
             </objects>
             <point key="canvasLocation" x="1849" y="-803"/>
         </scene>
-        <!--Add Post View Controller-->
+        <!--Add Post-->
         <scene sceneID="FZo-oa-gST">
             <objects>
                 <viewController id="Bgn-4S-XKE" customClass="AddPostViewController" customModule="FellowBloggerV2" customModuleProvider="target" sceneMemberID="viewController">
@@ -249,10 +249,22 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hdd-Dq-tcL"/>
                     </view>
-                    <navigationItem key="navigationItem" id="xrd-RS-cjn">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="w19-qd-lJ5"/>
-                        <barButtonItem key="rightBarButtonItem" title="Post" id="5Ic-pb-Zxa"/>
+                    <navigationItem key="navigationItem" title="Add Post" id="xrd-RS-cjn">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="w19-qd-lJ5">
+                            <connections>
+                                <action selector="cancelButtonPressed:" destination="Bgn-4S-XKE" id="EcM-WU-Wp2"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Post" id="5Ic-pb-Zxa">
+                            <connections>
+                                <action selector="postButtonPressed:" destination="Bgn-4S-XKE" id="mD4-13-acv"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="blogDescriptionTextField" destination="i9s-ks-JL8" id="wCT-Q1-MTt"/>
+                        <outlet property="blogImage" destination="XYq-v4-rjl" id="hsZ-Ec-41c"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6cv-va-IGw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -58,17 +58,19 @@ class BloggerViewController: UIViewController {
         }
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "Show Blog Details" {
-//            guard let indexPath = sender as? IndexPath,
-//                let cell = bloggerTableView.cellForRow(at: indexPath) as? BlogCell,
-//                let blogDVC = segue.destination as? PostDetailViewController else {
-//                    fatalError("cannot segue to dishDVC")
-//            }
-//            let blog = blogs[indexPath.row]
-//
-//        }
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Show Blog Details" {
+            guard let indexPath = sender as? IndexPath,
+                let cell = bloggerTableView.cellForRow(at: indexPath) as? BlogCell,
+                let blogDVC = segue.destination as? PostDetailViewController else {
+                    fatalError("cannot segue to dishDVC")
+            }
+            let blog = blogs[indexPath.row].bloggerId
+//            blogDVC.displayName = cell.displayNameLabel.text
+//            blogDVC = blog
+
+        }
+    }
 
 }
 
