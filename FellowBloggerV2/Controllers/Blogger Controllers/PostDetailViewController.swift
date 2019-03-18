@@ -8,10 +8,10 @@
 
 import UIKit
 
+
 class PostDetailViewController: UIViewController {
     
     @IBOutlet weak var bloggerImageView: CircularImageView!
-    
     @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var bloggerHandleLabel: UILabel!
     @IBOutlet weak var blogDescriptionLabel: UILabel!
@@ -20,13 +20,26 @@ class PostDetailViewController: UIViewController {
     public var blog: Blog!
     public var displayName: String?
     
+    private let authservice = AppDelegate.authservice
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateUI()
+        
+    }
+    
+    private func updateUI(){
+        postImageView.kf.setImage(with: URL(string: blog.imageURL), placeholder: #imageLiteral(resourceName: "placeholder-image"))
+        //bloggerHandleLabel.text = (displayName ?? "username")
+        blogDescriptionLabel.text = blog.blogDescription
+        
+        
         
     }
     
     @IBAction func moreInfoButtonPressed(_ sender: UIButton) {
     }
+    
     
     
 

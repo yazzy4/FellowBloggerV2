@@ -114,10 +114,10 @@ extension BloggerViewController: UITableViewDelegate {
     }
 }
 
-//extension BloggerViewController:  {
-//    func didSignOut(_ authservice: AuthService) {
-//        listener.remove()
-//        showLoginView()
-//    }
-//    func didSignOutWithError(_ authservice: AuthService, error: Error) {}
-//}
+extension BloggerViewController: AuthServiceSignOutDelegate  {
+    func didSignOut(_ authservice: AuthService) {
+        listener.remove()
+        showLoginView()
+    }
+    func didSignOutWithError(_ authservice: AuthService, error: Error) {}
+}
