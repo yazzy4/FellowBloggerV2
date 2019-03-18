@@ -30,15 +30,21 @@ class PostDetailViewController: UIViewController {
     
     private func updateUI(){
         postImageView.kf.setImage(with: URL(string: blog.imageURL), placeholder: #imageLiteral(resourceName: "placeholder-image"))
-        //bloggerHandleLabel.text = (displayName ?? "username")
         blogDescriptionLabel.text = blog.blogDescription
-        
-        
         
     }
     
-    @IBAction func moreInfoButtonPressed(_ sender: UIButton) {
+@IBAction func unwindFromEditBlogView(segue: UIStoryboardSegue) {
+        let editVC = segue.source as! EditPostViewController
+        blogDescriptionLabel.text = editVC.editBlogDescriptionTextView.text
     }
+    
+    @IBAction func moreInfoButtonPressed(_ sender: UIButton) {
+        guard let user = authservice.getCurrentUser() else {
+            print("no logged user")
+            return
+    }
+    
     
     
     
