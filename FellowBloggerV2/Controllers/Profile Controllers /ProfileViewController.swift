@@ -16,6 +16,11 @@ class ProfileViewController: UIViewController {
         
     }
     
+//private lazy var profileHeaderView: ProfileHeaderView = {
+//        let headerView = ProfileHeaderView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 300))
+//        return headerView
+//    }()
+    
 
    
 

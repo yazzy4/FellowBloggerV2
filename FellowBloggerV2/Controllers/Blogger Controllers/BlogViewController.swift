@@ -10,7 +10,7 @@ import UIKit
 import Kingfisher
 import Firebase
 
-class BloggerViewController: UIViewController {
+class BlogViewController: UIViewController {
     
     @IBOutlet weak var bloggerTableView: UITableView!
     public var blogs = [Blog]() {
@@ -20,6 +20,16 @@ class BloggerViewController: UIViewController {
             }
         }
     }
+    
+   
+    public var bloggers = [Blogger]() {
+        didSet {
+            DispatchQueue.main.async {
+                
+            }
+        }
+    }
+    
     
     private var listener: ListenerRegistration!
     private var authservice = AppDelegate.authservice
@@ -38,6 +48,8 @@ class BloggerViewController: UIViewController {
         bloggerTableView.delegate = self
         bloggerTableView.register(UINib(nibName: "BlogCell", bundle: nil), forCellReuseIdentifier: "BlogCell")
         fetchBlogs()
+        
+        
     }
     
     @objc private func fetchBlogs() {
@@ -58,23 +70,27 @@ class BloggerViewController: UIViewController {
         }
     }
     
+   
+
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Show Blog Details" {
             guard let indexPath = sender as? IndexPath,
                 let cell = bloggerTableView.cellForRow(at: indexPath) as? BlogCell,
                 let blogDVC = segue.destination as? PostDetailViewController else {
-                    fatalError("cannot segue to dishDVC")
+                    fatalError("cannot segue to blogDVC")
             }
             let blog = blogs[indexPath.row]
-            blogDVC.displayName = cell.blogDescriptionLabel.text
+            //blogDVC.displayName = cell.blogDescriptionLabel.text
             blogDVC.blog = blog
-
+        
         }
+        
     }
 
 }
 
-extension BloggerViewController: UITableViewDataSource {
+extension BlogViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return blogs.count
     }
@@ -85,36 +101,40 @@ extension BloggerViewController: UITableViewDataSource {
         }
         let blog = blogs[indexPath.row]
         cell.selectionStyle = .none
-        cell.bloggerImage.kf.setImage(with: URL(string: blog.bloggerId), placeholder: #imageLiteral(resourceName: "placeholder-image.png"))
         cell.blogDescriptionLabel.text = blog.blogDescription
         cell.createdAtLabel.text = blog.createdDate
         cell.postImage.kf.indicatorType = .activity
         cell.postImage.kf.setImage(with: URL(string: blog.imageURL), placeholder: #imageLiteral(resourceName: "placeholder-image.png"))
+//        cell.bloggerImage.kf.setImage(with: URL(string: blog.documentId), placeholder: #imageLiteral(resourceName: "placeholder-image.png"))
         fetchBlogCreator(userId: blog.bloggerId, cell: cell, blog: blog)
+        
         return cell
     }
     
     private func fetchBlogCreator(userId: String, cell: BlogCell, blog: Blog) {
         DBService.fetchBlogCreator(userId: userId) { (error, blogger) in
             if let error = error {
-                print("failed to fetch dish creator with error: \(error.localizedDescription)")
+                print("failed to fetch blog creator with error: \(error.localizedDescription)")
             } else if let blogger = blogger {
-                cell.bloggerImage.kf.setImage(with: URL(string: "@" +  blogger.displayName))
+                cell.bloggerImage.kf.setImage(with: URL(string: blogger.photoURL ?? "no image"))
             }
         }
     }
 }
-extension BloggerViewController: UITableViewDelegate {
+extension BlogViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return Constants.BlogCellHeight
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "Show Blog Details", sender: indexPath)
+        
+    
+       
     }
 }
 
-extension BloggerViewController: AuthServiceSignOutDelegate  {
+extension BlogViewController: AuthServiceSignOutDelegate  {
     func didSignOut(_ authservice: AuthService) {
         listener.remove()
         showLoginView()

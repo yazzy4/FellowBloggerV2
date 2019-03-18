@@ -15,6 +15,7 @@
                 <tabBarController storyboardIdentifier="BloggersTabBarController" automaticallyAdjustsScrollViewInsets="NO" id="3g3-Aq-hQC" customClass="BloggersTabBarController" customModule="FellowBloggerV2" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NlQ-ES-BdL">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -70,10 +71,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="j1P-c7-xAX" firstAttribute="top" secondItem="hEW-Xh-YNQ" secondAttribute="top" id="Pi3-w9-0Ca"/>
                             <constraint firstItem="hEW-Xh-YNQ" firstAttribute="bottom" secondItem="j1P-c7-xAX" secondAttribute="bottom" id="aBD-kQ-jce"/>
                             <constraint firstItem="hEW-Xh-YNQ" firstAttribute="trailing" secondItem="j1P-c7-xAX" secondAttribute="trailing" id="dYh-VN-HA8"/>
                             <constraint firstItem="j1P-c7-xAX" firstAttribute="leading" secondItem="hEW-Xh-YNQ" secondAttribute="leading" id="ngu-Wg-yxL"/>
+                            <constraint firstItem="j1P-c7-xAX" firstAttribute="top" secondItem="hEW-Xh-YNQ" secondAttribute="top" id="oAA-bK-by1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hEW-Xh-YNQ"/>
                     </view>
@@ -85,7 +86,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cnt-gg-Svf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1796" y="-1672"/>
+            <point key="canvasLocation" x="1796" y="-1672.7136431784108"/>
         </scene>
         <!--Search-->
         <scene sceneID="vNg-cL-wU4">
@@ -169,7 +170,7 @@
         <!--FellowBloggerV2-->
         <scene sceneID="2gP-1F-qXt">
             <objects>
-                <viewController id="zcs-Xc-hFE" customClass="BloggerViewController" customModule="FellowBloggerV2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="zcs-Xc-hFE" customClass="BlogViewController" customModule="FellowBloggerV2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="82U-Iq-t3Z">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -474,6 +475,6 @@
         <image name="placeholder-image" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5E4-a8-Z3f"/>
+        <segue reference="gKg-ds-bRn"/>
     </inferredMetricsTieBreakers>
 </document>

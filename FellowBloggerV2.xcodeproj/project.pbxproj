@@ -25,7 +25,7 @@
 		91AF07DA223AEEB400E487B8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AF07D9223AEEB400E487B8 /* LoginViewController.swift */; };
 		91AF07DD223BF08F00E487B8 /* UIAlertExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AF07DC223BF08F00E487B8 /* UIAlertExtentions.swift */; };
 		91AF07E0223BFAD600E487B8 /* BloggersTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AF07DF223BFAD600E487B8 /* BloggersTabBarController.swift */; };
-		91AF07E4223C129B00E487B8 /* BloggerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AF07E3223C129B00E487B8 /* BloggerViewController.swift */; };
+		91AF07E4223C129B00E487B8 /* BlogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AF07E3223C129B00E487B8 /* BlogViewController.swift */; };
 		91AF07E6223C12B400E487B8 /* AddPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AF07E5223C12B400E487B8 /* AddPostViewController.swift */; };
 		91AF07E8223C12CD00E487B8 /* EditPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AF07E7223C12CD00E487B8 /* EditPostViewController.swift */; };
 		91AF07EA223C12F900E487B8 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AF07E9223C12F900E487B8 /* PostDetailViewController.swift */; };
@@ -33,7 +33,7 @@
 		91AF07EE223C132500E487B8 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AF07ED223C132500E487B8 /* EditProfileViewController.swift */; };
 		91AF07F3223C1AB600E487B8 /* BlogCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91AF07F2223C1AB600E487B8 /* BlogCell.xib */; };
 		91AF07F5223C1B3200E487B8 /* IBDesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AF07F4223C1B3200E487B8 /* IBDesignableView.swift */; };
-		91AF07F7223C1C0500E487B8 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AF07F6223C1C0500E487B8 /* ProfileView.swift */; };
+		91AF07F7223C1C0500E487B8 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AF07F6223C1C0500E487B8 /* ProfileHeaderView.swift */; };
 		91AF07F9223C1C1E00E487B8 /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91AF07F8223C1C1E00E487B8 /* ProfileHeaderView.xib */; };
 		91AF07FC223C1C6400E487B8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AF07FB223C1C6400E487B8 /* Constants.swift */; };
 		91AF07FE223C232E00E487B8 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AF07FD223C232E00E487B8 /* SearchViewController.swift */; };
@@ -62,7 +62,7 @@
 		91AF07D9223AEEB400E487B8 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		91AF07DC223BF08F00E487B8 /* UIAlertExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertExtentions.swift; sourceTree = "<group>"; };
 		91AF07DF223BFAD600E487B8 /* BloggersTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloggersTabBarController.swift; sourceTree = "<group>"; };
-		91AF07E3223C129B00E487B8 /* BloggerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloggerViewController.swift; sourceTree = "<group>"; };
+		91AF07E3223C129B00E487B8 /* BlogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogViewController.swift; sourceTree = "<group>"; };
 		91AF07E5223C12B400E487B8 /* AddPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostViewController.swift; sourceTree = "<group>"; };
 		91AF07E7223C12CD00E487B8 /* EditPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPostViewController.swift; sourceTree = "<group>"; };
 		91AF07E9223C12F900E487B8 /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
@@ -70,7 +70,7 @@
 		91AF07ED223C132500E487B8 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		91AF07F2223C1AB600E487B8 /* BlogCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BlogCell.xib; sourceTree = "<group>"; };
 		91AF07F4223C1B3200E487B8 /* IBDesignableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignableView.swift; sourceTree = "<group>"; };
-		91AF07F6223C1C0500E487B8 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		91AF07F6223C1C0500E487B8 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		91AF07F8223C1C1E00E487B8 /* ProfileHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
 		91AF07FB223C1C6400E487B8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		91AF07FD223C232E00E487B8 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -208,7 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				91AF07FD223C232E00E487B8 /* SearchViewController.swift */,
-				91AF07E3223C129B00E487B8 /* BloggerViewController.swift */,
+				91AF07E3223C129B00E487B8 /* BlogViewController.swift */,
 				91AF07E5223C12B400E487B8 /* AddPostViewController.swift */,
 				91AF07E7223C12CD00E487B8 /* EditPostViewController.swift */,
 				91AF07E9223C12F900E487B8 /* PostDetailViewController.swift */,
@@ -231,7 +231,7 @@
 				91AF07FF223C280600E487B8 /* BlogCell.swift */,
 				91AF07F2223C1AB600E487B8 /* BlogCell.xib */,
 				91AF07F4223C1B3200E487B8 /* IBDesignableView.swift */,
-				91AF07F6223C1C0500E487B8 /* ProfileView.swift */,
+				91AF07F6223C1C0500E487B8 /* ProfileHeaderView.swift */,
 				91AF07F8223C1C1E00E487B8 /* ProfileHeaderView.xib */,
 			);
 			path = Views;
@@ -415,10 +415,10 @@
 				910D1F04223AC0D40090B2BB /* String+Date.swift in Sources */,
 				91AF07DA223AEEB400E487B8 /* LoginViewController.swift in Sources */,
 				91AF07E0223BFAD600E487B8 /* BloggersTabBarController.swift in Sources */,
-				91AF07E4223C129B00E487B8 /* BloggerViewController.swift in Sources */,
+				91AF07E4223C129B00E487B8 /* BlogViewController.swift in Sources */,
 				91AF0802223C57CC00E487B8 /* UIViewControllerExtension.swift in Sources */,
 				91AF07E8223C12CD00E487B8 /* EditPostViewController.swift in Sources */,
-				91AF07F7223C1C0500E487B8 /* ProfileView.swift in Sources */,
+				91AF07F7223C1C0500E487B8 /* ProfileHeaderView.swift in Sources */,
 				910D1EE2223ABB790090B2BB /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

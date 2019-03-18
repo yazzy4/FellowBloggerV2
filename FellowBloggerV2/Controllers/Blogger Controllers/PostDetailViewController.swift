@@ -18,6 +18,7 @@ class PostDetailViewController: UIViewController {
     @IBOutlet weak var blogDescriptionTextView: UITextView!
     
     public var blog: Blog!
+    public var blogger: Blogger!
     public var displayName: String?
     
     private let authservice = AppDelegate.authservice
@@ -30,8 +31,11 @@ class PostDetailViewController: UIViewController {
     
     private func updateUI(){
         postImageView.kf.setImage(with: URL(string: blog.imageURL), placeholder: #imageLiteral(resourceName: "placeholder-image"))
+        bloggerHandleLabel.text = (displayName ?? "no username")
         blogDescriptionLabel.text = blog.blogDescription
         
+        
+       
     }
     
 @IBAction func unwindFromEditBlogView(segue: UIStoryboardSegue) {
@@ -47,6 +51,6 @@ class PostDetailViewController: UIViewController {
     
     
     
-    
+    }
 
 }
