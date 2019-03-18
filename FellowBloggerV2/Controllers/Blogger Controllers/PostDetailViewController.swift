@@ -33,10 +33,12 @@ class PostDetailViewController: UIViewController {
         postImageView.kf.setImage(with: URL(string: blog.imageURL), placeholder: #imageLiteral(resourceName: "placeholder-image"))
         bloggerHandleLabel.text = (displayName ?? "no username")
         blogDescriptionLabel.text = blog.blogDescription
+        //blogDescriptionTextView.text = (blogger.bio ?? "no blog")
         
         
-       
     }
+    
+
     
 @IBAction func unwindFromEditBlogView(segue: UIStoryboardSegue) {
         let editVC = segue.source as! EditPostViewController

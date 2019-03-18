@@ -9,9 +9,18 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileHeaderView" customModule="FellowBloggerV2" customModuleProvider="target">
+            <connections>
+                <outlet property="bloggerImageView" destination="ik4-ye-iPB" id="wRe-6f-lLd"/>
+                <outlet property="contentView" destination="dwN-uw-oCZ" id="Bey-kk-EKb"/>
+                <outlet property="coverPhoto" destination="7Xz-Fk-Oui" id="8UK-bg-ZSw"/>
+                <outlet property="handleLabel" destination="rG2-Sb-paa" id="CfH-Ev-Gdg"/>
+                <outlet property="nameLabel" destination="q2s-U0-42T" id="b3R-aU-Mbt"/>
+                <outlet property="signoutButtonPressed" destination="HVF-h8-Mb1" id="W39-uQ-xsX"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="dwN-uw-oCZ" customClass="ProfileHeaderView" customModule="FellowBloggerV2" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="dwN-uw-oCZ">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -42,11 +51,17 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MU7-ed-oOe">
                     <rect key="frame" x="194" y="162" width="52" height="36"/>
                     <state key="normal" title="Button" image="edit-pencil-icon"/>
+                    <connections>
+                        <action selector="editButtonPresseds:" destination="-1" eventType="touchUpInside" id="THe-uj-VBl"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HVF-h8-Mb1">
                     <rect key="frame" x="281" y="166" width="70" height="33"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <state key="normal" title="sign out"/>
+                    <connections>
+                        <action selector="signOutButtonPressed:" destination="-1" eventType="touchUpInside" id="hPr-Gf-nzl"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -77,11 +92,6 @@
             <viewLayoutGuide key="safeArea" id="QJF-OF-PhI"/>
             <connections>
                 <outlet property="bloggerImageView" destination="ik4-ye-iPB" id="qb4-wF-Tj4"/>
-                <outlet property="coverPhoto" destination="7Xz-Fk-Oui" id="p1P-oH-puN"/>
-                <outlet property="editButtonPressed" destination="MU7-ed-oOe" id="kHr-rt-Naq"/>
-                <outlet property="handleLabel" destination="rG2-Sb-paa" id="cbe-BK-ojt"/>
-                <outlet property="nameLabel" destination="q2s-U0-42T" id="RBf-ue-aos"/>
-                <outlet property="signoutButtonPressed" destination="HVF-h8-Mb1" id="0c3-6m-ici"/>
             </connections>
             <point key="canvasLocation" x="-129" y="-206"/>
         </view>
