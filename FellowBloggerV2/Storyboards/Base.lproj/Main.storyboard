@@ -82,7 +82,7 @@
                     <connections>
                         <outlet property="profileTableView" destination="j1P-c7-xAX" id="4kk-PT-zxz"/>
                         <segue destination="CjQ-IQ-8sO" kind="show" id="gKg-ds-bRn"/>
-                        <segue destination="A0K-Ya-Lam" kind="presentation" id="e8s-QR-1eg"/>
+                        <segue destination="A0K-Ya-Lam" kind="presentation" identifier="Show Edit Profile" id="e8s-QR-1eg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cnt-gg-Svf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -387,7 +387,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kfh-CJ-R1t">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="331" width="375" height="336"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="WMi-Gc-aon">
@@ -400,12 +400,28 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ewu-hi-fDK">
+                                <rect key="frame" x="0.0" y="99" width="374" height="232"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="232" id="V1P-dt-2p2"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="placeholder-image" translatesAutoresizingMaskIntoConstraints="NO" id="1st-Je-a8f" customClass="CircularImageView" customModule="FellowBloggerV2" customModuleProvider="target">
+                                <rect key="frame" x="137" y="165" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="kfh-CJ-R1t" firstAttribute="top" secondItem="qzF-CQ-FSA" secondAttribute="top" id="Fee-ay-m1r"/>
+                            <constraint firstItem="qzF-CQ-FSA" firstAttribute="trailing" secondItem="ewu-hi-fDK" secondAttribute="trailing" constant="1" id="3oZ-ll-sLJ"/>
+                            <constraint firstItem="kfh-CJ-R1t" firstAttribute="trailing" secondItem="qzF-CQ-FSA" secondAttribute="trailing" id="JGB-s2-BbY"/>
+                            <constraint firstItem="ewu-hi-fDK" firstAttribute="top" secondItem="qzF-CQ-FSA" secondAttribute="top" constant="35" id="Rck-VP-xqE"/>
+                            <constraint firstItem="kfh-CJ-R1t" firstAttribute="leading" secondItem="qzF-CQ-FSA" secondAttribute="leading" id="WiQ-i7-ctW"/>
+                            <constraint firstItem="ewu-hi-fDK" firstAttribute="leading" secondItem="qzF-CQ-FSA" secondAttribute="leading" id="Y0T-0Q-SGE"/>
                             <constraint firstItem="qzF-CQ-FSA" firstAttribute="bottom" secondItem="kfh-CJ-R1t" secondAttribute="bottom" id="fd8-FL-6kY"/>
+                            <constraint firstItem="kfh-CJ-R1t" firstAttribute="top" secondItem="ewu-hi-fDK" secondAttribute="bottom" id="jv8-6c-QZk"/>
                             <constraint firstItem="qzF-CQ-FSA" firstAttribute="trailing" secondItem="kfh-CJ-R1t" secondAttribute="trailing" id="n4N-lU-NGY"/>
+                            <constraint firstItem="kfh-CJ-R1t" firstAttribute="bottom" secondItem="qzF-CQ-FSA" secondAttribute="bottom" id="oLh-E6-MO4"/>
                             <constraint firstItem="kfh-CJ-R1t" firstAttribute="leading" secondItem="qzF-CQ-FSA" secondAttribute="leading" id="rte-if-PPg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qzF-CQ-FSA"/>
@@ -423,12 +439,14 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="bloggerImage" destination="1st-Je-a8f" id="EO1-PT-cDB"/>
+                        <outlet property="coverImage" destination="ewu-hi-fDK" id="aZR-5k-Kc4"/>
                         <outlet property="tableView" destination="kfh-CJ-R1t" id="G7G-c8-VUl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S0w-Ci-EMl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1732" y="-2463"/>
+            <point key="canvasLocation" x="1732" y="-2464.3178410794603"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="b3Y-Y4-Ie9">

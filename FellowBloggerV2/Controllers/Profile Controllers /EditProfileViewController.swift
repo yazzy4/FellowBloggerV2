@@ -7,10 +7,16 @@
 //
 
 import UIKit
+import Toucan
 
 class EditProfileViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var bloggerImage: CircularImageView!
+    @IBOutlet weak var coverImage: UIImageView!
+    
+    
+    public var blogger: Blogger!
     
     override func viewDidLoad() {
         super.viewDidLoad()

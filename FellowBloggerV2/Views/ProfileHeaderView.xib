@@ -16,7 +16,6 @@
                 <outlet property="coverPhoto" destination="7Xz-Fk-Oui" id="8UK-bg-ZSw"/>
                 <outlet property="handleLabel" destination="rG2-Sb-paa" id="CfH-Ev-Gdg"/>
                 <outlet property="nameLabel" destination="q2s-U0-42T" id="b3R-aU-Mbt"/>
-                <outlet property="signoutButtonPressed" destination="HVF-h8-Mb1" id="W39-uQ-xsX"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -60,7 +59,7 @@
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <state key="normal" title="sign out"/>
                     <connections>
-                        <action selector="signOutButtonPressed:" destination="-1" eventType="touchUpInside" id="hPr-Gf-nzl"/>
+                        <action selector="signOutButtonPressed:" destination="-1" eventType="touchUpInside" id="N7w-b1-YKG"/>
                     </connections>
                 </button>
             </subviews>

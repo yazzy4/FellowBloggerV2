@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 class ProfileViewController: UIViewController {
     
     @IBOutlet weak var profileTableView: UITableView!
@@ -29,9 +31,11 @@ private lazy var profileHeaderView: ProfileHeaderView = {
             }
         }
     }
+private var bloggers = [Blogger]()
+    
 override func viewWillAppear(_ animated: Bool) {
 super.viewWillAppear(true)
-    //updateProfileUI()
+    updateProfileUI()
         }
         
 private func configureTableView() {
@@ -57,7 +61,7 @@ private func updateProfileUI() {
                 }
                 
                 self?.profileHeaderView.bloggerImageView.kf.setImage(with: URL(string: photoURL), placeholder: #imageLiteral(resourceName: "placeholder-image"))
-                
+    
             }
         }
     }
@@ -86,50 +90,58 @@ private func updateProfileUI() {
                 else {
                     fatalError("editProfileVC not found")
             }
-            editProfileVC.profileImageView = profileHeaderView.profileImageView.image
-            editProfileVC.displayName = profileHeaderView.displayNameLabel.text
+            editProfileVC.bloggerImage = profileHeaderView.bloggerImageView
+            editProfileVC.coverImage = profileHeaderView.coverPhoto
         } else if segue.identifier == "Show Dish Details" {
             guard let indexPath = sender as? IndexPath,
-                let cell = tableView.cellForRow(at: indexPath) as? DishCell,
-                let dishDVC = segue.destination as? DishDetailViewController else {
+                let cell = profileTableView.cellForRow(at: indexPath) as? BlogCell,
+                let editDVC = segue.destination as? EditProfileViewController else {
                     fatalError("cannot segue to dishDVC")
             }
-            let dish = dishes[indexPath.row]
-            dishDVC.displayName = cell.displayNameLabel.text
-            dishDVC.dish = dish
+            let blogger = bloggers[indexPath.row]
+            //editDVC.blogger.firstName = cell.fullName
         }
     }
     
 }
 
+
+
    
 extension ProfileViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        return blogs.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
-    }
-    
-    
-    }
-
-
-extension ProfileViewController: UITableViewDelegate {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "BlogCell", for: indexPath) as? BlogCell else {
+            fatalError("BlogCell not found")
+        }
+   return cell
     
     }
+}
 
 extension ProfileViewController: ProfileHeaderViewDelegate {
     func willSignOut(_ profileHeaderView: ProfileHeaderView) {
-        <#code#>
+        authservice.signOutAccount()
     }
     
     func willEditProfile(_ profileHeaderView: ProfileHeaderView) {
-        <#code#>
+        performSegue(withIdentifier: "Show Edit Profile", sender: nil)
     }
     
     
     }
+
+extension ProfileViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "Show Blog Details", sender: indexPath)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return Constants.BlogCellHeight
+    }
+}
 
 

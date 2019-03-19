@@ -21,7 +21,7 @@ class ProfileHeaderView: UIView {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var handleLabel: UILabel!
 
-    @IBOutlet weak var signoutButtonPressed: UIButton!
+ 
     
     weak var delegate: ProfileHeaderViewDelegate?
     
