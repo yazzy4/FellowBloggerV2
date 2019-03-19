@@ -80,6 +80,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="17Z-tk-8dX"/>
                     <connections>
+                        <outlet property="profileTableView" destination="j1P-c7-xAX" id="4kk-PT-zxz"/>
                         <segue destination="CjQ-IQ-8sO" kind="show" id="gKg-ds-bRn"/>
                         <segue destination="A0K-Ya-Lam" kind="presentation" id="e8s-QR-1eg"/>
                     </connections>
@@ -409,11 +410,25 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qzF-CQ-FSA"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Edit Profile" id="SIe-TI-CJc"/>
+                    <navigationItem key="navigationItem" title="Edit Profile" id="SIe-TI-CJc">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="1m2-hm-0Sg">
+                            <connections>
+                                <action selector="cancelButtonPressed:" destination="Rx3-dl-t88" id="mtP-eQ-Xe2"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="KyA-eW-SHa">
+                            <connections>
+                                <action selector="saveButtonPressed:" destination="Rx3-dl-t88" id="bMQ-ev-Ecw"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="kfh-CJ-R1t" id="G7G-c8-VUl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S0w-Ci-EMl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3119" y="-2225"/>
+            <point key="canvasLocation" x="1732" y="-2463"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="b3Y-Y4-Ie9">
@@ -467,7 +482,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="89x-Jb-QQc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1935" y="-2514"/>
+            <point key="canvasLocation" x="774" y="-2462"/>
         </scene>
     </scenes>
     <resources>
