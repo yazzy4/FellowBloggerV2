@@ -81,7 +81,7 @@
                     <navigationItem key="navigationItem" title="Profile" id="17Z-tk-8dX"/>
                     <connections>
                         <outlet property="profileTableView" destination="j1P-c7-xAX" id="4kk-PT-zxz"/>
-                        <segue destination="CjQ-IQ-8sO" kind="show" id="gKg-ds-bRn"/>
+                        <segue destination="CjQ-IQ-8sO" kind="show" identifier="Show Blog Details" id="gKg-ds-bRn"/>
                         <segue destination="A0K-Ya-Lam" kind="presentation" identifier="Show Edit Profile" id="e8s-QR-1eg"/>
                     </connections>
                 </viewController>
@@ -390,7 +390,7 @@
                                 <rect key="frame" x="0.0" y="331" width="375" height="336"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="WMi-Gc-aon">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="BlogCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BlogCell" id="WMi-Gc-aon" customClass="BlogCell" customModule="FellowBloggerV2" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WMi-Gc-aon" id="JmU-5L-NE7">
@@ -406,14 +406,30 @@
                                     <constraint firstAttribute="height" constant="232" id="V1P-dt-2p2"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="placeholder-image" translatesAutoresizingMaskIntoConstraints="NO" id="1st-Je-a8f" customClass="CircularImageView" customModule="FellowBloggerV2" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="glN-7T-AV2">
+                                <rect key="frame" x="-113" y="-66" width="566" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="9PE-Yc-g1x"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="placeholder-image"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iX9-L9-OPj" customClass="CircularButton" customModule="FellowBloggerV2" customModuleProvider="target">
                                 <rect key="frame" x="137" y="165" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="kuC-Bz-FN2"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="placeholder-image"/>
+                                <connections>
+                                    <action selector="profileButtonPressed:" destination="Rx3-dl-t88" eventType="touchUpInside" id="Pmo-km-WgX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="iX9-L9-OPj" firstAttribute="top" secondItem="qzF-CQ-FSA" secondAttribute="top" constant="101" id="1Sd-7Y-hGZ"/>
                             <constraint firstItem="qzF-CQ-FSA" firstAttribute="trailing" secondItem="ewu-hi-fDK" secondAttribute="trailing" constant="1" id="3oZ-ll-sLJ"/>
+                            <constraint firstItem="iX9-L9-OPj" firstAttribute="leading" secondItem="qzF-CQ-FSA" secondAttribute="leading" constant="137" id="7vQ-oR-nUc"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="glN-7T-AV2" secondAttribute="trailing" constant="-78" id="9uZ-oN-8qM"/>
                             <constraint firstItem="kfh-CJ-R1t" firstAttribute="trailing" secondItem="qzF-CQ-FSA" secondAttribute="trailing" id="JGB-s2-BbY"/>
                             <constraint firstItem="ewu-hi-fDK" firstAttribute="top" secondItem="qzF-CQ-FSA" secondAttribute="top" constant="35" id="Rck-VP-xqE"/>
                             <constraint firstItem="kfh-CJ-R1t" firstAttribute="leading" secondItem="qzF-CQ-FSA" secondAttribute="leading" id="WiQ-i7-ctW"/>
@@ -422,7 +438,11 @@
                             <constraint firstItem="kfh-CJ-R1t" firstAttribute="top" secondItem="ewu-hi-fDK" secondAttribute="bottom" id="jv8-6c-QZk"/>
                             <constraint firstItem="qzF-CQ-FSA" firstAttribute="trailing" secondItem="kfh-CJ-R1t" secondAttribute="trailing" id="n4N-lU-NGY"/>
                             <constraint firstItem="kfh-CJ-R1t" firstAttribute="bottom" secondItem="qzF-CQ-FSA" secondAttribute="bottom" id="oLh-E6-MO4"/>
+                            <constraint firstItem="qzF-CQ-FSA" firstAttribute="trailing" secondItem="iX9-L9-OPj" secondAttribute="trailing" constant="138" id="qxo-Pq-EPI"/>
+                            <constraint firstItem="glN-7T-AV2" firstAttribute="top" secondItem="eJx-6a-QpG" secondAttribute="top" constant="-66" id="rDO-mu-QAl"/>
                             <constraint firstItem="kfh-CJ-R1t" firstAttribute="leading" secondItem="qzF-CQ-FSA" secondAttribute="leading" id="rte-if-PPg"/>
+                            <constraint firstItem="glN-7T-AV2" firstAttribute="leading" secondItem="eJx-6a-QpG" secondAttribute="leading" constant="-113" id="tiB-8s-ST0"/>
+                            <constraint firstItem="kfh-CJ-R1t" firstAttribute="top" secondItem="iX9-L9-OPj" secondAttribute="bottom" constant="66" id="tkD-1K-tOn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qzF-CQ-FSA"/>
                     </view>
@@ -439,8 +459,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="bloggerImage" destination="1st-Je-a8f" id="EO1-PT-cDB"/>
                         <outlet property="coverImage" destination="ewu-hi-fDK" id="aZR-5k-Kc4"/>
+                        <outlet property="profileImageButton" destination="iX9-L9-OPj" id="zmc-jS-uhs"/>
                         <outlet property="tableView" destination="kfh-CJ-R1t" id="G7G-c8-VUl"/>
                     </connections>
                 </viewController>

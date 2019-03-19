@@ -16,6 +16,12 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        profileTableView.dataSource = self
+        profileTableView.delegate = self
+        configureTableView()
+        profileHeaderView.delegate = self
+        fetchUserBlogs()
+        
     }
     
 private lazy var profileHeaderView: ProfileHeaderView = {
@@ -90,8 +96,8 @@ private func updateProfileUI() {
                 else {
                     fatalError("editProfileVC not found")
             }
-            editProfileVC.bloggerImage = profileHeaderView.bloggerImageView
-            editProfileVC.coverImage = profileHeaderView.coverPhoto
+            editProfileVC.coverImage = profileHeaderView.bloggerImageView
+            //editProfileVC.coverImage = profileHeaderView.coverPhoto
         } else if segue.identifier == "Show Dish Details" {
             guard let indexPath = sender as? IndexPath,
                 let cell = profileTableView.cellForRow(at: indexPath) as? BlogCell,

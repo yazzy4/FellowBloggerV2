@@ -89,9 +89,6 @@
                 <constraint firstItem="MU7-ed-oOe" firstAttribute="leading" secondItem="ik4-ye-iPB" secondAttribute="trailing" constant="103" id="zUI-yB-FCs"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="QJF-OF-PhI"/>
-            <connections>
-                <outlet property="bloggerImageView" destination="ik4-ye-iPB" id="qb4-wF-Tj4"/>
-            </connections>
             <point key="canvasLocation" x="-129" y="-206"/>
         </view>
     </objects>
