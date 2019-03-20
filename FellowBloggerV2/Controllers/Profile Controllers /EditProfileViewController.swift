@@ -13,9 +13,9 @@ class EditProfileViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var coverImage: UIImageView!
-    @IBOutlet weak var profileImageButton: UIButton!
-    
-    
+    @IBOutlet weak var profileImageButton: CircularButton!
+ 
+   
     public var blogger: Blogger!
     
     override func viewDidLoad() {
@@ -24,14 +24,14 @@ class EditProfileViewController: UIViewController {
     }
     
 
-    @IBAction func cancelButtonPressed(_ sender: Any) {
+    @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
         dismiss(animated: true)
     }
     
-    @IBAction func saveButtonPressed(_ sender: Any) {
+    @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
     }
     
-    @IBAction func profileButtonPressed(_ sender: Any) {
+    @IBAction func profileButtonPressed(_ sender: CircularButton) {
     }
     
     

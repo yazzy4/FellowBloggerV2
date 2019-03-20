@@ -14,6 +14,11 @@ class ProfileViewController: UIViewController {
     
     @IBOutlet weak var profileTableView: UITableView!
     
+    private lazy var profileHeaderView: ProfileHeaderView = {
+        let headerView = ProfileHeaderView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 300))
+        return headerView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         profileTableView.dataSource = self
@@ -23,11 +28,6 @@ class ProfileViewController: UIViewController {
         fetchUserBlogs()
         
     }
-    
-private lazy var profileHeaderView: ProfileHeaderView = {
-        let headerView = ProfileHeaderView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 300))
-        return headerView
-    }()
     
     private let authservice = AppDelegate.authservice
     private var blogs = [Blog]() {
@@ -66,7 +66,7 @@ private func updateProfileUI() {
                         
                 }
                 
-                self?.profileHeaderView.bloggerImageView.kf.setImage(with: URL(string: photoURL), placeholder: #imageLiteral(resourceName: "placeholder-image"))
+                self?.profileHeaderView.coverPhoto.kf.setImage(with: URL(string: photoURL), placeholder: #imageLiteral(resourceName: "placeholder-image"))
     
             }
         }
@@ -96,8 +96,9 @@ private func updateProfileUI() {
                 else {
                     fatalError("editProfileVC not found")
             }
-            editProfileVC.coverImage = profileHeaderView.bloggerImageView
-            //editProfileVC.coverImage = profileHeaderView.coverPhoto
+            editProfileVC.coverImage = 
+            profileHeaderView.coverPhoto
+        editProfileVC.profileImageButton = profileHeaderView.bloggerImageView
         } else if segue.identifier == "Show Dish Details" {
             guard let indexPath = sender as? IndexPath,
                 let cell = profileTableView.cellForRow(at: indexPath) as? BlogCell,

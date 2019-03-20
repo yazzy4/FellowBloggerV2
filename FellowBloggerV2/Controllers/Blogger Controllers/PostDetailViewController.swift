@@ -15,7 +15,6 @@ class PostDetailViewController: UIViewController {
     @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var bloggerHandleLabel: UILabel!
     @IBOutlet weak var blogDescriptionLabel: UILabel!
-    @IBOutlet weak var blogDescriptionTextView: UITextView!
     
     public var blog: Blog!
     public var blogger: Blogger!
@@ -25,18 +24,47 @@ class PostDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateUI()
-        
+        //updateUI()
+       updateUsernameAndImage()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        updateUI()
+    }
+    
     
     private func updateUI(){
         postImageView.kf.setImage(with: URL(string: blog.imageURL), placeholder: #imageLiteral(resourceName: "placeholder-image"))
         bloggerHandleLabel.text = (displayName ?? "no username")
         blogDescriptionLabel.text = blog.blogDescription
-        //blogDescriptionTextView.text = (blogger.bio ?? "no blog")
+        
         
         
     }
+    
+    func updateUsernameAndImage(){
+        guard let user = authservice.getCurrentUser() else {
+            print("no logged user")
+            return
+        }
+        DBService.fetchBlogCreator(userId: blog.bloggerId) { [weak self] (error, blogger) in
+            if let error = error {
+                self?.showAlert(title: "Error fetching username", message: error.localizedDescription)
+            } else if let blogger = blogger {
+                self?.bloggerHandleLabel.text = "@" + (blogger.displayName ?? "no display name")
+            }
+            guard let photoURL = blogger?.photoURL,
+                !photoURL.isEmpty else {
+                    return
+            }
+            self?.bloggerImageView.kf.setImage(with: URL(string: photoURL), placeholder: #imageLiteral(resourceName: "placeholder-image"))
+            
+        }
+        
+    }
+        
+   
     
 
     
