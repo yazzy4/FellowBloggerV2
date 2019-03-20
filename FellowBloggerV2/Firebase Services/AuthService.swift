@@ -18,9 +18,15 @@ protocol AuthServiceExistingAccountDelegate: AnyObject {
     func didSignInToExistingAccount(_ authservice: AuthService, user: User)
 }
 
+protocol AuthServiceSignOutDelegate: AnyObject {
+    func didSignOutWithError(_ authservice: AuthService, error: Error)
+    func didSignOut(_ authservice: AuthService)
+}
+
 final class AuthService {
     weak var authserviceCreateNewAccountDelegate: AuthServiceCreateNewAccountDelegate?
     weak var authserviceExistingAccountDelegate: AuthServiceExistingAccountDelegate?
+    weak var authServiceSignOutDelegate: AuthServiceSignOutDelegate?
     
     public func createNewAccount(username: String, email: String, password: String) {
         Auth.auth().createUser(withEmail: email, password: password) { (authDataResult, error) in
@@ -72,5 +78,13 @@ final class AuthService {
     
     public func getCurrentUser() -> User? {
         return Auth.auth().currentUser
+    }
+    public func signOutAccount() {
+        do {
+            try Auth.auth().signOut()
+            authServiceSignOutDelegate?.didSignOut(self)
+        } catch {
+            authServiceSignOutDelegate?.didSignOutWithError(self, error: error)
+        }
     }
 }

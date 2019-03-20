@@ -7,24 +7,32 @@
 //
 
 import UIKit
+import Toucan
 
 class EditProfileViewController: UIViewController {
-
+    
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var coverImage: UIImageView!
+    @IBOutlet weak var profileImageButton: UIButton!
+    
+    
+    public var blogger: Blogger!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func cancelButtonPressed(_ sender: Any) {
+        dismiss(animated: true)
     }
-    */
-
+    
+    @IBAction func saveButtonPressed(_ sender: Any) {
+    }
+    
+    @IBAction func profileButtonPressed(_ sender: Any) {
+    }
+    
+    
 }
