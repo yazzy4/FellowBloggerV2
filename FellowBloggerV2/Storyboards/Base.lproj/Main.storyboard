@@ -377,14 +377,24 @@
                         <viewLayoutGuide key="safeArea" id="42z-G1-yMU"/>
                     </view>
                     <navigationItem key="navigationItem" title="Edit Post" id="Qbx-lo-Fcu">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="tBz-8H-4jr"/>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="0lb-Et-gPU"/>
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="6qg-EM-Man">
+                            <connections>
+                                <action selector="cancelButtonPressed:" destination="rdw-41-ip1" id="REa-Eq-SIl"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="fHN-Za-HlJ">
+                            <connections>
+                                <action selector="saveButtonPressed:" destination="rdw-41-ip1" id="KqS-KQ-w8L"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="editBlogDescriptionTextView" destination="Pqs-BO-RLU" id="zaq-wE-lh0"/>
+                        <outlet property="editBlogDescriptionTextView" destination="Pqs-BO-RLU" id="CFz-V3-Ria"/>
+                        <segue destination="jRe-5X-U4Z" kind="unwind" identifier="Unwind From Edit Blog" unwindAction="unwindFromEditBlogViewWithSegue:" id="iOK-oF-lXN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zna-vT-UO7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="jRe-5X-U4Z" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4536.8000000000002" y="-531.18440779610194"/>
         </scene>
