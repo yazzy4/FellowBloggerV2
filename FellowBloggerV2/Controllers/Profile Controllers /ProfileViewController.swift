@@ -60,17 +60,19 @@ private func updateProfileUI() {
                 self?.showAlert(title: "Error fetching account info", message: error?.localizedDescription)
             } else if let blogger = blogger {
                 self?.profileHeaderView.handleLabel.text = "@" + (blogger.displayName ?? "no display name")
+                self?.profileHeaderView.nameLabel.text = blogger.fullName 
                 guard let photoURL = blogger.photoURL,
                     !photoURL.isEmpty else {
                         return
-                        
                 }
                 
                 self?.profileHeaderView.coverPhoto.kf.setImage(with: URL(string: photoURL), placeholder: #imageLiteral(resourceName: "placeholder-image"))
-    
+                self?.profileHeaderView.bloggerImageView.kf.setImage(with: URL(string: blogger.photoURL ?? "no image"), for: .normal)
             }
         }
     }
+    
+//    public func fetchUserName
     
     private func fetchUserBlogs(){
         guard let user = authservice.getCurrentUser() else {

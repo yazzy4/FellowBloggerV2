@@ -380,6 +380,9 @@
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="tBz-8H-4jr"/>
                         <barButtonItem key="rightBarButtonItem" title="Save" id="0lb-Et-gPU"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="editBlogDescriptionTextView" destination="Pqs-BO-RLU" id="zaq-wE-lh0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zna-vT-UO7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -44,7 +44,7 @@ class PostDetailViewController: UIViewController {
 //            print("no logged user")
 //            return
 //        }
-        DBService.fetchBlogCreator(userId: blog.bloggerId) { [weak self] (error, blogger) in
+        DBService.fetchBlogCreator(userId:  blog.bloggerId ) { [weak self] (error, blogger) in
             if let error = error {
                 self?.showAlert(title: "Error fetching username", message: error.localizedDescription)
             } else if let blogger = blogger {
