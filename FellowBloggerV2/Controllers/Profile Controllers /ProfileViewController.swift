@@ -60,7 +60,7 @@ private func updateProfileUI() {
                 self?.showAlert(title: "Error fetching account info", message: error?.localizedDescription)
             } else if let blogger = blogger {
                 self?.profileHeaderView.handleLabel.text = "@" + (blogger.displayName ?? "no display name")
-                self?.profileHeaderView.nameLabel.text = blogger.fullName 
+                self?.profileHeaderView.nameLabel.text = blogger.fullName
                 guard let photoURL = blogger.photoURL,
                     !photoURL.isEmpty else {
                         return
@@ -72,7 +72,7 @@ private func updateProfileUI() {
         }
     }
     
-//    public func fetchUserName
+
     
     private func fetchUserBlogs(){
         guard let user = authservice.getCurrentUser() else {
@@ -98,17 +98,19 @@ private func updateProfileUI() {
                 else {
                     fatalError("editProfileVC not found")
             }
-            editProfileVC.coverImage = 
+        editProfileVC.coverImage =
             profileHeaderView.coverPhoto
         editProfileVC.profileImageButton = profileHeaderView.bloggerImageView
-        } else if segue.identifier == "Show Dish Details" {
+        } else if segue.identifier == "Show Blog Details" {
             guard let indexPath = sender as? IndexPath,
                 let cell = profileTableView.cellForRow(at: indexPath) as? BlogCell,
-                let editDVC = segue.destination as? EditProfileViewController else {
-                    fatalError("cannot segue to dishDVC")
+                let detailDVC = segue.destination as? PostDetailViewController else {
+                    fatalError("cannot segue to editDVC")
             }
-            let blogs = bloggers[indexPath.row]
-            //editDVC.blogger.bloggerId = cell.
+            let blog = blogs[indexPath.row]
+            detailDVC.blogDescription = cell.blogDescriptionLabel.text
+            detailDVC.blog = blog
+            
         }
     }
     

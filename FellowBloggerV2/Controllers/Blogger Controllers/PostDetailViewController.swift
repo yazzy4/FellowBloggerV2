@@ -19,6 +19,7 @@ class PostDetailViewController: UIViewController {
     public var blog: Blog!
     public var blogger: Blogger!
     public var displayName: String?
+    public var blogDescription: String?
     
     private let authservice = AppDelegate.authservice
     
