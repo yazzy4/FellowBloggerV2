@@ -345,28 +345,42 @@
                         <outlet property="bloggerHandleLabel" destination="0p7-Ec-KLs" id="4Zp-Yw-MHo"/>
                         <outlet property="bloggerImageView" destination="CFj-17-1Mp" id="VSb-YQ-Tej"/>
                         <outlet property="postImageView" destination="Mlh-EI-1sK" id="SF4-Dm-k4E"/>
-                        <segue destination="upx-0D-Uzf" kind="presentation" id="GqM-Gg-Nzt"/>
+                        <segue destination="upx-0D-Uzf" kind="presentation" identifier="Show Edit Blog" id="GqM-Gg-Nzt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DFA-Pa-Oun" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2936.8000000000002" y="-531.18440779610194"/>
         </scene>
-        <!--Edit Profile-->
+        <!--Edit Post-->
         <scene sceneID="RDM-8i-S5t">
             <objects>
                 <viewController id="rdw-41-ip1" customClass="EditPostViewController" customModule="FellowBloggerV2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="e6s-QF-VU8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Pqs-BO-RLU">
+                                <rect key="frame" x="16" y="117" width="343" height="288"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="42z-G1-yMU" firstAttribute="bottom" secondItem="Pqs-BO-RLU" secondAttribute="bottom" constant="262" id="0ce-tX-5aL"/>
+                            <constraint firstItem="42z-G1-yMU" firstAttribute="trailing" secondItem="Pqs-BO-RLU" secondAttribute="trailing" constant="16" id="6yT-g5-DDq"/>
+                            <constraint firstItem="Pqs-BO-RLU" firstAttribute="leading" secondItem="42z-G1-yMU" secondAttribute="leading" constant="16" id="Ujx-Er-Aov"/>
+                            <constraint firstItem="Pqs-BO-RLU" firstAttribute="top" secondItem="42z-G1-yMU" secondAttribute="top" constant="53" id="w8e-1f-JRr"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="42z-G1-yMU"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Edit Profile" id="Qbx-lo-Fcu"/>
+                    <navigationItem key="navigationItem" title="Edit Post" id="Qbx-lo-Fcu"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zna-vT-UO7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4537" y="-531"/>
+            <point key="canvasLocation" x="4536.8000000000002" y="-531.18440779610194"/>
         </scene>
         <!--Edit Profile-->
         <scene sceneID="jXh-AY-ciM">
@@ -388,6 +402,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="HHK-rB-qx7" kind="presentation" id="wRd-ho-jXH"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

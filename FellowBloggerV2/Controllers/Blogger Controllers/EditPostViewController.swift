@@ -11,6 +11,8 @@ import UIKit
 class EditPostViewController: UIViewController {
     
     @IBOutlet weak var editBlogDescriptionTextView: UITextView!
+    
+    public var blog: Blog!
 
     override func viewDidLoad() {
         super.viewDidLoad()

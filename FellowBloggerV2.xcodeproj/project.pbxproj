@@ -21,6 +21,7 @@
 		910D1F02223AC0B60090B2BB /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910D1F01223AC0B60090B2BB /* Date+Extension.swift */; };
 		910D1F04223AC0D40090B2BB /* String+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910D1F03223AC0D40090B2BB /* String+Date.swift */; };
 		910D1F06223AC2830090B2BB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 910D1F05223AC2810090B2BB /* GoogleService-Info.plist */; };
+		91ACEF442242AB8E009B6D56 /* EditBioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91ACEF432242AB8E009B6D56 /* EditBioViewController.swift */; };
 		91AF07D8223AED1000E487B8 /* LoginView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91AF07D7223AED1000E487B8 /* LoginView.storyboard */; };
 		91AF07DA223AEEB400E487B8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AF07D9223AEEB400E487B8 /* LoginViewController.swift */; };
 		91AF07DD223BF08F00E487B8 /* UIAlertExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AF07DC223BF08F00E487B8 /* UIAlertExtentions.swift */; };
@@ -58,6 +59,7 @@
 		910D1F01223AC0B60090B2BB /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		910D1F03223AC0D40090B2BB /* String+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Date.swift"; sourceTree = "<group>"; };
 		910D1F05223AC2810090B2BB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		91ACEF432242AB8E009B6D56 /* EditBioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBioViewController.swift; sourceTree = "<group>"; };
 		91AF07D7223AED1000E487B8 /* LoginView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginView.storyboard; sourceTree = "<group>"; };
 		91AF07D9223AEEB400E487B8 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		91AF07DC223BF08F00E487B8 /* UIAlertExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertExtentions.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				91AF07E3223C129B00E487B8 /* BlogViewController.swift */,
 				91AF07E5223C12B400E487B8 /* AddPostViewController.swift */,
 				91AF07E7223C12CD00E487B8 /* EditPostViewController.swift */,
+				91ACEF432242AB8E009B6D56 /* EditBioViewController.swift */,
 				91AF07E9223C12F900E487B8 /* PostDetailViewController.swift */,
 			);
 			path = "Blogger Controllers";
@@ -416,6 +419,7 @@
 				91AF07DA223AEEB400E487B8 /* LoginViewController.swift in Sources */,
 				91AF07E0223BFAD600E487B8 /* BloggersTabBarController.swift in Sources */,
 				91AF07E4223C129B00E487B8 /* BlogViewController.swift in Sources */,
+				91ACEF442242AB8E009B6D56 /* EditBioViewController.swift in Sources */,
 				91AF0802223C57CC00E487B8 /* UIViewControllerExtension.swift in Sources */,
 				91AF07E8223C12CD00E487B8 /* EditPostViewController.swift in Sources */,
 				91AF07F7223C1C0500E487B8 /* ProfileHeaderView.swift in Sources */,
