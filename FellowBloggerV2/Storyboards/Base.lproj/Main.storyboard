@@ -376,7 +376,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="42z-G1-yMU"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Edit Post" id="Qbx-lo-Fcu"/>
+                    <navigationItem key="navigationItem" title="Edit Post" id="Qbx-lo-Fcu">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="tBz-8H-4jr"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="0lb-Et-gPU"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zna-vT-UO7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

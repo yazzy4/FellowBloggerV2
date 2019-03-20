@@ -105,8 +105,8 @@ private func updateProfileUI() {
                 let editDVC = segue.destination as? EditProfileViewController else {
                     fatalError("cannot segue to dishDVC")
             }
-            let blogger = bloggers[indexPath.row]
-            //editDVC.blogger.firstName = cell.fullName
+            let blogs = bloggers[indexPath.row]
+            //editDVC.blogger.bloggerId = cell.
         }
     }
     
@@ -124,6 +124,11 @@ extension ProfileViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "BlogCell", for: indexPath) as? BlogCell else {
             fatalError("BlogCell not found")
         }
+        let blog = blogs[indexPath.row]
+        cell.selectionStyle = .none
+        cell.blogDescriptionLabel.text = blog.blogDescription
+        cell.createdAtLabel.text = blog.createdDate
+        cell.postImage.kf.setImage(with: URL(string: blog.imageURL), placeholder: #imageLiteral(resourceName: "placeholder-image"))
    return cell
     
     }

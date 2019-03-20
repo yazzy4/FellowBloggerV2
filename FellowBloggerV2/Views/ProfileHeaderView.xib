@@ -23,11 +23,15 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-image" translatesAutoresizingMaskIntoConstraints="NO" id="7Xz-Fk-Oui">
-                    <rect key="frame" x="0.0" y="20" width="375" height="134"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="placeholder-image" translatesAutoresizingMaskIntoConstraints="NO" id="7Xz-Fk-Oui">
+                    <rect key="frame" x="0.0" y="20" width="375" height="148"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-image" translatesAutoresizingMaskIntoConstraints="NO" id="ik4-ye-iPB" customClass="CircularImageView" customModule="FellowBloggerV2" customModuleProvider="target">
                     <rect key="frame" x="16" y="123" width="75" height="75"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="75" id="NRk-HV-YNL"/>
+                        <constraint firstAttribute="height" constant="75" id="kpC-Aw-TS3"/>
+                    </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q2s-U0-42T">
                     <rect key="frame" x="16" y="206" width="209" height="30"/>
@@ -48,14 +52,14 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MU7-ed-oOe">
-                    <rect key="frame" x="194" y="162" width="52" height="36"/>
+                    <rect key="frame" x="194" y="176" width="52" height="22"/>
                     <state key="normal" title="Button" image="edit-pencil-icon"/>
                     <connections>
                         <action selector="editButtonPresseds:" destination="-1" eventType="touchUpInside" id="THe-uj-VBl"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HVF-h8-Mb1">
-                    <rect key="frame" x="281" y="166" width="70" height="33"/>
+                    <rect key="frame" x="281" y="180" width="70" height="33"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <state key="normal" title="sign out"/>
                     <connections>
@@ -68,8 +72,6 @@
                 <constraint firstItem="q2s-U0-42T" firstAttribute="leading" secondItem="QJF-OF-PhI" secondAttribute="leading" constant="16" id="C0V-oS-yq0"/>
                 <constraint firstItem="HVF-h8-Mb1" firstAttribute="top" secondItem="7Xz-Fk-Oui" secondAttribute="bottom" constant="12" id="DPz-AW-AuC"/>
                 <constraint firstItem="7Xz-Fk-Oui" firstAttribute="trailing" secondItem="QJF-OF-PhI" secondAttribute="trailing" id="EQQ-Bt-gr6"/>
-                <constraint firstItem="QJF-OF-PhI" firstAttribute="trailing" secondItem="ik4-ye-iPB" secondAttribute="trailing" constant="284" id="Esd-O4-WYH"/>
-                <constraint firstItem="QJF-OF-PhI" firstAttribute="bottom" secondItem="7Xz-Fk-Oui" secondAttribute="bottom" constant="513" id="JhE-5r-X5u"/>
                 <constraint firstItem="QJF-OF-PhI" firstAttribute="trailing" secondItem="q2s-U0-42T" secondAttribute="trailing" constant="150" id="ORZ-Ne-VcR"/>
                 <constraint firstItem="ik4-ye-iPB" firstAttribute="leading" secondItem="QJF-OF-PhI" secondAttribute="leading" constant="16" id="Pal-3z-1Cq"/>
                 <constraint firstItem="QJF-OF-PhI" firstAttribute="trailing" secondItem="rG2-Sb-paa" secondAttribute="trailing" constant="150" id="U6j-po-4y9"/>
@@ -81,7 +83,6 @@
                 <constraint firstItem="q2s-U0-42T" firstAttribute="top" secondItem="ik4-ye-iPB" secondAttribute="bottom" constant="8" id="iNc-5M-LQk"/>
                 <constraint firstItem="q2s-U0-42T" firstAttribute="top" secondItem="MU7-ed-oOe" secondAttribute="bottom" constant="8" id="iTW-Sd-LFQ"/>
                 <constraint firstItem="MU7-ed-oOe" firstAttribute="top" secondItem="7Xz-Fk-Oui" secondAttribute="bottom" constant="8" id="l14-HJ-WEe"/>
-                <constraint firstItem="QJF-OF-PhI" firstAttribute="bottom" secondItem="HVF-h8-Mb1" secondAttribute="bottom" constant="468" id="mGr-xl-wJl"/>
                 <constraint firstItem="7Xz-Fk-Oui" firstAttribute="leading" secondItem="QJF-OF-PhI" secondAttribute="leading" id="nZI-2g-JiC"/>
                 <constraint firstItem="rG2-Sb-paa" firstAttribute="leading" secondItem="QJF-OF-PhI" secondAttribute="leading" constant="16" id="pG4-wL-vkX"/>
                 <constraint firstItem="HVF-h8-Mb1" firstAttribute="leading" secondItem="MU7-ed-oOe" secondAttribute="trailing" constant="35" id="v15-lq-HcW"/>
@@ -89,7 +90,7 @@
                 <constraint firstItem="MU7-ed-oOe" firstAttribute="leading" secondItem="ik4-ye-iPB" secondAttribute="trailing" constant="103" id="zUI-yB-FCs"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="QJF-OF-PhI"/>
-            <point key="canvasLocation" x="-129" y="-206"/>
+            <point key="canvasLocation" x="-130.40000000000001" y="-206.44677661169416"/>
         </view>
     </objects>
     <resources>
