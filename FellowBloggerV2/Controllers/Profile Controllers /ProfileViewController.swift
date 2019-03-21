@@ -67,7 +67,7 @@ private func updateProfileUI() {
                 }
                 
                 self?.profileHeaderView.coverPhoto.kf.setImage(with: URL(string: photoURL), placeholder: #imageLiteral(resourceName: "placeholder-image"))
-                self?.profileHeaderView.bloggerImageView.kf.setImage(with: URL(string: blogger.photoURL ?? "no image"), for: .normal)
+            self?.profileHeaderView.bloggerImageView.kf.setImage(with: URL(string: blogger.photoURL ?? "no image"), for: .normal)
             }
         }
     }
@@ -94,7 +94,7 @@ private func updateProfileUI() {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Show Edit Profile" {
             guard let navController = segue.destination as? UINavigationController,
-                let editProfileVC = navController.viewControllers.first as? EditProfileViewController
+                let editProfileVC = navController.viewControllers.first as? EditProfileTableViewController
                 else {
                     fatalError("editProfileVC not found")
             }

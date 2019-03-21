@@ -40,11 +40,7 @@ class PostDetailViewController: UIViewController {
         blogDescriptionLabel.text = blog.blogDescription
     }
     
-    func updateUsernameAndImage(){
-//        guard let user = authservice.getCurrentUser() else {
-//            print("no logged user")
-//            return
-//        }
+   private func updateUsernameAndImage(){
         DBService.fetchBlogCreator(userId:  blog.bloggerId ) { [weak self] (error, blogger) in
             if let error = error {
                 self?.showAlert(title: "Error fetching username", message: error.localizedDescription)
