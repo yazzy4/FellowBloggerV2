@@ -16,7 +16,7 @@ protocol ProfileHeaderViewDelegate: AnyObject {
 class ProfileHeaderView: UIView {
 
     @IBOutlet var contentView: UIView!
-    @IBOutlet weak var coverPhoto: UIImageView!
+    @IBOutlet weak var coverPhoto: UIButton!
     @IBOutlet weak var bloggerImageView: CircularButton!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var handleLabel: UILabel!

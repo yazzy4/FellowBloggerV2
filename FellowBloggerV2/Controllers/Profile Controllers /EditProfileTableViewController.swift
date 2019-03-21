@@ -13,7 +13,7 @@ import Kingfisher
 class EditProfileTableViewController: UITableViewController {
   
     @IBOutlet weak var editTableView: UITableView!
-    @IBOutlet weak var coverImage: UIImageView!
+    @IBOutlet weak var coverImage: UIButton!
     @IBOutlet weak var profileImageButton: CircularButton!
     
     public var bloggerInfo = [Blogger]()
@@ -93,7 +93,9 @@ class EditProfileTableViewController: UITableViewController {
             ])
     }
    
- 
+    @IBAction func coverPhotoButtonPressed(_ sender: UIButton) {
+    }
+    
 }
 
 //extension EditProfileTableViewController: UITableViewDataSource{

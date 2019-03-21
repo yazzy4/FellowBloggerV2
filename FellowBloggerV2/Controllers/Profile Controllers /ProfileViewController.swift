@@ -66,7 +66,7 @@ private func updateProfileUI() {
                         return
                 }
                 
-                self?.profileHeaderView.coverPhoto.kf.setImage(with: URL(string: photoURL), placeholder: #imageLiteral(resourceName: "placeholder-image"))
+                self?.profileHeaderView.coverPhoto.kf.setImage(with: URL(string: blogger.coverImageURL ?? "no image"), for: .normal)
             self?.profileHeaderView.bloggerImageView.kf.setImage(with: URL(string: blogger.photoURL ?? "no image"), for: .normal)
             }
         }
