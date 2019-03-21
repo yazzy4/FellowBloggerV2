@@ -15,6 +15,11 @@ class EditProfileTableViewController: UITableViewController {
     @IBOutlet weak var editTableView: UITableView!
     @IBOutlet weak var coverImage: UIButton!
     @IBOutlet weak var profileImageButton: CircularButton!
+    @IBOutlet weak var firstNameTextField: UITextField!
+    @IBOutlet weak var lastNameTextField: UITextField!
+    @IBOutlet weak var userNameTextField: UITextField!
+    
+    @IBOutlet weak var bioTextField: UITextField!
     
     public var bloggerInfo = [Blogger]()
     
@@ -28,6 +33,7 @@ class EditProfileTableViewController: UITableViewController {
     private var authservice = AppDelegate.authservice
     
     public var profileImage: UIImage!
+    public var coverImageView: UIImage!
     public var blogger: Blogger!
     
     override func viewDidLoad() {
@@ -37,7 +43,8 @@ class EditProfileTableViewController: UITableViewController {
     
     private func updateProfileUI() {
         profileImageButton.setImage(profileImage, for: .normal)
-        //            coverImage.kf.setImage(with: URL(string: blogger.coverImageURL ?? "no image"), placeholder: #imageLiteral(resourceName: "placeholder-image"))
+        coverImage.setImage(coverImageView, for: .normal)
+        
     }
 
     @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
