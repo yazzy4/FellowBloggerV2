@@ -19,14 +19,18 @@ class EditProfileTableViewController: UITableViewController {
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var userNameTextField: UITextField!
     
-    @IBOutlet weak var bioTextField: UITextField!
+    @IBOutlet weak var bioTextLabel: UILabel!
+    
     
     public var bloggerInfo = [Blogger]()
+    public var bloggers: Blogger?
     
     private var selectedImage: UIImage?
+    private var selectedCoverImage: UIImage?
+
     private lazy var imagePickerController: UIImagePickerController = {
         let ip = UIImagePickerController()
-        //ip.delegate = self
+        ip.delegate = self
         return ip
     }()
     
@@ -34,17 +38,26 @@ class EditProfileTableViewController: UITableViewController {
     
     public var profileImage: UIImage!
     public var coverImageView: UIImage!
+    public var isSelected = false
+
     public var blogger: Blogger!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //editTableView.dataSource = self
         updateProfileUI()
+    }
+    
+    private func configureTableView() {
+        editTableView.dataSource = self
+        editTableView.delegate = self
+        editTableView.register(UINib(nibName: "BlogCell", bundle: nil), forCellReuseIdentifier: "BlogCell")
     }
     
     private func updateProfileUI() {
         profileImageButton.setImage(profileImage, for: .normal)
         coverImage.setImage(coverImageView, for: .normal)
-        
+        selectedImage = profileImageButton.imageView?.image
     }
 
     @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
@@ -58,7 +71,7 @@ class EditProfileTableViewController: UITableViewController {
                 showAlert(title: "Missing Fields", message: "A photo is  Required")
                 return
         }
-        StorageService.postImage(imageData: imageData, imageName: Constants.BlogImagePath + user.uid) { (error, imageUrl) in
+        StorageService.postImage(imageData: imageData, imageName: Constants.ProfileImagePath + user.uid) { (error, imageUrl) in
             if let error = error {
                 self.showAlert(title:"Error Saving Photo", message: error.localizedDescription)
             } else if let imageUrl = imageUrl {
@@ -82,8 +95,37 @@ class EditProfileTableViewController: UITableViewController {
                 self.navigationItem.rightBarButtonItem?.isEnabled = true
             }
         }
+        guard let coverImageData = selectedCoverImage?.jpegData(compressionQuality: 1.0)
+            else {
+                showAlert(title: "Missing Fields", message: "A photo is  Required")
+                return
+        }
+        StorageService.postImage(imageData: coverImageData, imageName: Constants.CoverPhotoImagePath + user.uid) { (error, coverUrl) in            if let error = error {
+            self.showAlert(title:"Error Saving Photo", message: error.localizedDescription)
+            } else if let coverUrl = coverUrl {
+                let request = user.createProfileChangeRequest()
+                request.photoURL = coverUrl
+                request.commitChanges(completion: { (error) in
+                    if let error = error {
+                        self.showAlert(title: "Error Saving Account Info", message: error.localizedDescription)
+                    }
+                })
+                DBService.firestoreDB
+                    .collection(BloggersCollectionKeys.CollectionKey)
+                    .document(user.uid)
+                    .updateData([BloggersCollectionKeys.CoverImageURLKey  :  coverUrl.absoluteString], completion: { (error)
+                        in
+                        if let error = error {
+                            self.showAlert(title: "Error Saving Account", message: error.localizedDescription)
+                        }
+                    })
+                self.dismiss(animated: true)
+                self.navigationItem.rightBarButtonItem?.isEnabled = true
+            }
+        }
     }
-    @IBAction func profileImageButtonPressed(_ sender: CircularButton) {
+    @IBAction func profileImageButtonPressed() {
+        isSelected = true
         var actionTitles = [String]()
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             actionTitles = ["Photo Library", "Camera"]
@@ -101,27 +143,63 @@ class EditProfileTableViewController: UITableViewController {
     }
    
     @IBAction func coverPhotoButtonPressed(_ sender: UIButton) {
+        isSelected = false
+        var actionTitles = [String]()
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            actionTitles = ["Photo Library", "Camera"]
+        } else {
+            actionTitles = ["Photo Library"]
+        }
+        showActionSheet(title: nil, message: nil, actionTitles: actionTitles, handlers: [{ [unowned self] photoLibraryAction in
+            self.imagePickerController.sourceType = .photoLibrary
+            self.present(self.imagePickerController, animated: true)
+            }, { cameraAction in
+                self.imagePickerController.sourceType = .camera
+                self.present(self.imagePickerController, animated: true)
+            }
+            ])
     }
     
+
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        
+//
+//        }
+    }
+
+extension EditProfileTableViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
+            print("original image not available")
+            return
+        }
+        let size = CGSize(width: 500, height: 500)
+        let resizedImage = Toucan.Resize.resizeImage(originalImage, size: size)
+        if isSelected {
+            selectedImage = resizedImage
+            profileImageButton.setImage(resizedImage, for: .normal)
+            } else {
+            selectedCoverImage = resizedImage
+            coverImage.setImage(resizedImage, for: .normal)
+        }
+        dismiss(animated: true)
+        }
+        
 }
 
-//extension EditProfileTableViewController: UITableViewDataSource{
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return bloggerInfo.count
-//    }
-//    
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        guard let cell = tableView.dequeueReusableCell(withIdentifier: "BlogCell", for: indexPath) as? BlogCell else {
-//            fatalError("BlogCell not found")
-//        }
-//        let blogger = bloggerInfo[indexPath.row]
-//        cell.selectionStyle = .none
-//        cell.bloggerImage.kf.setImage(with: URL(string: blogger.photoURL ?? "no image available"), placeholder: #imageLiteral(resourceName: "placeholder-image"))
-//        
-//        return cell
-//    }
-//    
-//}
+
     
+
+
 
 

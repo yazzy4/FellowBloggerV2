@@ -37,7 +37,8 @@ class ProfileViewController: UIViewController {
             }
         }
     }
-private var bloggers = [Blogger]()
+//private var bloggers = [Blogger]()
+    public var blogger: Blogger?
     
 override func viewWillAppear(_ animated: Bool) {
 super.viewWillAppear(true)
@@ -66,8 +67,8 @@ private func updateProfileUI() {
                         return
                 }
                 
-                self?.profileHeaderView.coverPhoto.kf.setImage(with: URL(string: blogger.coverImageURL ?? "no image"), for: .normal)
-            self?.profileHeaderView.bloggerImageView.kf.setImage(with: URL(string: blogger.photoURL ?? "no image"), for: .normal)
+                self?.profileHeaderView.coverPhoto.kf.setImage(with: URL(string: blogger.coverImageURL ?? "no image"), for: .normal )
+        self?.profileHeaderView.bloggerImageView.kf.setImage(with: URL(string: blogger.photoURL ?? "no image"), for: .normal)
             }
         }
     }
@@ -99,8 +100,9 @@ private func updateProfileUI() {
                     fatalError("editProfileVC not found")
             }
         editProfileVC.coverImage =
-            profileHeaderView.coverPhoto
+            profileHeaderView.bloggerImageView
         editProfileVC.profileImageButton = profileHeaderView.bloggerImageView
+            editProfileVC.blogger = blogger
         } else if segue.identifier == "Show Blog Details" {
             guard let indexPath = sender as? IndexPath,
                 let cell = profileTableView.cellForRow(at: indexPath) as? BlogCell,

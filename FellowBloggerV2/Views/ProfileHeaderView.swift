@@ -18,6 +18,7 @@ class ProfileHeaderView: UIView {
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var coverPhoto: UIButton!
     @IBOutlet weak var bloggerImageView: CircularButton!
+
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var handleLabel: UILabel!
 

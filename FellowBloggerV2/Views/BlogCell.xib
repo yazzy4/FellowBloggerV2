@@ -62,10 +62,10 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="blogDescriptionLabel" destination="Hwo-sm-Uuu" id="yZD-IC-Yd3"/>
-                <outlet property="bloggerImage" destination="Ukb-d2-xOj" id="3QS-1f-ccJ"/>
-                <outlet property="createdAtLabel" destination="Nl0-0N-zx6" id="deV-n9-oT5"/>
-                <outlet property="postImage" destination="Ozq-l8-xfm" id="lw4-ko-vJp"/>
+                <outlet property="blogDescriptionLabel" destination="Hwo-sm-Uuu" id="rpu-Vc-ocl"/>
+                <outlet property="bloggerImage" destination="Ukb-d2-xOj" id="OgI-ND-4X5"/>
+                <outlet property="createdAtLabel" destination="Nl0-0N-zx6" id="opj-Wc-ZDS"/>
+                <outlet property="postImage" destination="Ozq-l8-xfm" id="6Yk-yh-gkv"/>
             </connections>
             <point key="canvasLocation" x="195.19999999999999" y="-465.06746626686657"/>
         </tableViewCell>

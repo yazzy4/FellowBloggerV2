@@ -58,7 +58,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="X4H-V6-ZxJ" customClass="BlogCell" customModule="FellowBloggerV2" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="BlogCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BlogCell" id="X4H-V6-ZxJ" customClass="BlogCell" customModule="FellowBloggerV2" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="X4H-V6-ZxJ" id="VHY-KD-zU3">
@@ -516,9 +516,9 @@
                                                         <constraint firstAttribute="height" constant="100" id="Q6B-Tp-naC"/>
                                                         <constraint firstAttribute="width" constant="100" id="l4l-NA-jTb"/>
                                                     </constraints>
-                                                    <state key="normal" image="placeholder-image" backgroundImage="placeholder-image"/>
+                                                    <state key="normal" backgroundImage="placeholder-image"/>
                                                     <connections>
-                                                        <action selector="profileImageButtonPressed:" destination="MYy-ui-InQ" eventType="touchUpInside" id="KmQ-A2-09v"/>
+                                                        <action selector="profileImageButtonPressed" destination="MYy-ui-InQ" eventType="touchUpInside" id="vp9-96-3oJ"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -641,45 +641,41 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BlogCell" rowHeight="75" id="hG3-xH-POW" customClass="BlogCell" customModule="FellowBloggerV2" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="75" id="hG3-xH-POW">
                                         <rect key="frame" x="0.0" y="417" width="375" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hG3-xH-POW" id="N24-L4-kbR">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KPo-yZ-VsI">
-                                                    <rect key="frame" x="175" y="4" width="215" height="60"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="215" id="Ylf-f3-tTP"/>
-                                                        <constraint firstAttribute="height" constant="60" id="aC7-jR-4JR"/>
-                                                    </constraints>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Bio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bea-VU-Ko5">
+                                                    <rect key="frame" x="16" y="26.5" width="327" height="21.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                    <connections>
-                                                        <segue destination="HHK-rB-qx7" kind="show" id="kUG-Ld-jnI"/>
-                                                    </connections>
-                                                </textField>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ynd-MU-LUT">
-                                                    <rect key="frame" x="16" y="27" width="136" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="PDF-st-Co9"/>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="136" id="eSh-F7-x3A"/>
-                                                    </constraints>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iSw-6T-D81">
+                                                    <rect key="frame" x="351" y="19" width="0.0" height="37"/>
+                                                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Ynd-MU-LUT" firstAttribute="centerY" secondItem="KPo-yZ-VsI" secondAttribute="centerY" constant="3.5" id="31S-CH-lPY"/>
-                                                <constraint firstItem="Ynd-MU-LUT" firstAttribute="bottom" secondItem="N24-L4-kbR" secondAttribute="bottomMargin" constant="-16" id="7EQ-IU-Uye"/>
-                                                <constraint firstItem="Ynd-MU-LUT" firstAttribute="leading" secondItem="N24-L4-kbR" secondAttribute="leadingMargin" id="80r-Rv-Et2"/>
-                                                <constraint firstItem="KPo-yZ-VsI" firstAttribute="leading" secondItem="Ynd-MU-LUT" secondAttribute="trailing" multiplier="1.1" constant="8" symbolic="YES" id="eO9-qW-lex"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="bea-VU-Ko5" secondAttribute="bottom" constant="16" id="5ww-bu-cuh"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="iSw-6T-D81" secondAttribute="bottom" constant="8" id="BaN-fO-b2U"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="iSw-6T-D81" secondAttribute="trailing" constant="8" id="RNJ-xZ-LHz"/>
+                                                <constraint firstItem="iSw-6T-D81" firstAttribute="top" secondItem="N24-L4-kbR" secondAttribute="topMargin" constant="8" id="h38-WA-tgG"/>
+                                                <constraint firstItem="bea-VU-Ko5" firstAttribute="centerY" secondItem="N24-L4-kbR" secondAttribute="centerY" id="hVf-1G-faT"/>
+                                                <constraint firstItem="bea-VU-Ko5" firstAttribute="leading" secondItem="N24-L4-kbR" secondAttribute="leadingMargin" id="jVK-fZ-Urv"/>
+                                                <constraint firstItem="iSw-6T-D81" firstAttribute="leading" secondItem="bea-VU-Ko5" secondAttribute="trailing" constant="8" id="mg2-PH-2W3"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="tintColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <segue destination="HHK-rB-qx7" kind="show" id="x7N-IR-Fi6"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -702,7 +698,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="bioTextField" destination="KPo-yZ-VsI" id="0QK-Yx-8qN"/>
+                        <outlet property="bioTextLabel" destination="iSw-6T-D81" id="uSr-eY-Pfq"/>
                         <outlet property="coverImage" destination="xGP-f3-Whj" id="JiE-Wn-QCL"/>
                         <outlet property="editTableView" destination="GvY-nC-vgF" id="hlx-Hz-Itw"/>
                         <outlet property="firstNameTextField" destination="Lmo-fv-k2r" id="P1M-tS-1HH"/>
@@ -721,6 +717,6 @@
         <image name="placeholder-image" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gKg-ds-bRn"/>
+        <segue reference="5E4-a8-Z3f"/>
     </inferredMetricsTieBreakers>
 </document>
