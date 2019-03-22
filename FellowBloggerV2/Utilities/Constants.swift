@@ -15,4 +15,5 @@ struct Constants {
     static let ProfileImagePath = "profileImages/" 
     static let CoverPhotoImagePath = "coverImages/"
     static let BlogCellHeight: CGFloat = 300.0
+    static let BloggerCellHeight: CGFloat = 100.0
 }

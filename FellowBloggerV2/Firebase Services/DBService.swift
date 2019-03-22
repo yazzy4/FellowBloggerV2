@@ -9,6 +9,7 @@
 import Foundation
 import FirebaseFirestore
 import Firebase
+
 struct BloggersCollectionKeys {
     static let CollectionKey = "bloggers"
     static let BloggerIdKey = "bloggerId"

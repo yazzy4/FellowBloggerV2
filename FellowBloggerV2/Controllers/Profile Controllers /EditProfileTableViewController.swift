@@ -18,12 +18,12 @@ class EditProfileTableViewController: UITableViewController {
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var userNameTextField: UITextField!
-    
     @IBOutlet weak var bioTextLabel: UILabel!
     
-    
+    public var displayName: String!
     public var bloggerInfo = [Blogger]()
     public var bloggers: Blogger?
+    
     
     private var selectedImage: UIImage?
     private var selectedCoverImage: UIImage?
@@ -58,11 +58,15 @@ class EditProfileTableViewController: UITableViewController {
         profileImageButton.setImage(profileImage, for: .normal)
         coverImage.setImage(coverImageView, for: .normal)
         selectedImage = profileImageButton.imageView?.image
+        firstNameTextField.text = displayName?.replacingOccurrences(of: "", with: " ")
+        
     }
-
+    
+ 
     @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
         dismiss(animated: true)
     }
+    
     @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
         navigationItem.rightBarButtonItem?.isEnabled = false
         guard let imageData = selectedImage?.jpegData(compressionQuality: 1.0),
@@ -71,28 +75,30 @@ class EditProfileTableViewController: UITableViewController {
                 showAlert(title: "Missing Fields", message: "A photo is  Required")
                 return
         }
-        StorageService.postImage(imageData: imageData, imageName: Constants.ProfileImagePath + user.uid) { (error, imageUrl) in
+        StorageService.postImage(imageData: imageData, imageName: Constants.ProfileImagePath + user.uid) { [weak self] (error, imageUrl) in
             if let error = error {
-                self.showAlert(title:"Error Saving Photo", message: error.localizedDescription)
+                self?.showAlert(title:"Error Saving Photo", message: error.localizedDescription)
             } else if let imageUrl = imageUrl {
                 let request = user.createProfileChangeRequest()
                 request.photoURL = imageUrl
+                request.displayName = self?.displayName
                 request.commitChanges(completion: { (error) in
                     if let error = error {
-                        self.showAlert(title: "Error Saving Account Info", message: error.localizedDescription)
+                        self?.showAlert(title: "Error Saving Account Info", message: error.localizedDescription)
                     }
                 })
                 DBService.firestoreDB
                     .collection(BloggersCollectionKeys.CollectionKey)
                     .document(user.uid)
-                    .updateData([BloggersCollectionKeys.PhotoURLKey  :  imageUrl.absoluteString], completion: { (error)
-                        in
-                        if let error = error {
-                            self.showAlert(title: "Error Saving Account", message: error.localizedDescription)
-                        }
+                    .updateData([BloggersCollectionKeys.PhotoURLKey : imageUrl.absoluteString,
+                        BloggersCollectionKeys.DisplayNameKey : self!.displayName
+                        ], completion: { (error) in
+                            if let error = error {
+                                self?.showAlert(title: "Error Saving Account Info", message: error.localizedDescription)
+                            }
                     })
-                self.dismiss(animated: true)
-                self.navigationItem.rightBarButtonItem?.isEnabled = true
+                self?.performSegue(withIdentifier: "Edit Bio", sender: self)
+                self?.navigationItem.rightBarButtonItem?.isEnabled = true
             }
         }
         guard let coverImageData = selectedCoverImage?.jpegData(compressionQuality: 1.0)
@@ -100,27 +106,27 @@ class EditProfileTableViewController: UITableViewController {
                 showAlert(title: "Missing Fields", message: "A photo is  Required")
                 return
         }
-        StorageService.postImage(imageData: coverImageData, imageName: Constants.CoverPhotoImagePath + user.uid) { (error, coverUrl) in            if let error = error {
-            self.showAlert(title:"Error Saving Photo", message: error.localizedDescription)
+        StorageService.postImage(imageData: coverImageData, imageName: Constants.CoverPhotoImagePath + user.uid) { [weak self] (error, coverUrl) in            if let error = error {
+            self?.showAlert(title:"Error Saving Photo", message: error.localizedDescription)
             } else if let coverUrl = coverUrl {
                 let request = user.createProfileChangeRequest()
                 request.photoURL = coverUrl
                 request.commitChanges(completion: { (error) in
                     if let error = error {
-                        self.showAlert(title: "Error Saving Account Info", message: error.localizedDescription)
+                        self?.showAlert(title: "Error Saving Account Info", message: error.localizedDescription)
                     }
                 })
                 DBService.firestoreDB
                     .collection(BloggersCollectionKeys.CollectionKey)
                     .document(user.uid)
-                    .updateData([BloggersCollectionKeys.CoverImageURLKey  :  coverUrl.absoluteString], completion: { (error)
+                    .updateData([BloggersCollectionKeys.CoverImageURLKey  :  coverUrl.absoluteString, BloggersCollectionKeys.DisplayNameKey : self!.displayName ], completion: { (error)
                         in
                         if let error = error {
-                            self.showAlert(title: "Error Saving Account", message: error.localizedDescription)
+                            self?.showAlert(title: "Error Saving Account", message: error.localizedDescription)
                         }
                     })
-                self.dismiss(animated: true)
-                self.navigationItem.rightBarButtonItem?.isEnabled = true
+                self?.performSegue(withIdentifier: "Edit Bio", sender: self)
+                self?.navigationItem.rightBarButtonItem?.isEnabled = true
             }
         }
     }
@@ -157,7 +163,7 @@ class EditProfileTableViewController: UITableViewController {
                 self.imagePickerController.sourceType = .camera
                 self.present(self.imagePickerController, animated: true)
             }
-            ])
+        ])
     }
     
 
@@ -197,6 +203,17 @@ extension EditProfileTableViewController: UIImagePickerControllerDelegate, UINav
         
 }
 
+extension EditProfileTableViewController: UITextViewDelegate{
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == firstNameTextField.text {
+            textView.text = ""
+            textView.textColor = .black
+        }
+    }
+//    func textViewDidEndEditing(_ textView: UITextView) {
+//        <#code#>
+//    }
+}
 
     
 

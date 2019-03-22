@@ -44,7 +44,15 @@ override func viewWillAppear(_ animated: Bool) {
 super.viewWillAppear(true)
     updateProfileUI()
         }
+    
+    
+    @IBAction func unwindFromEditProfileView(segue: UIStoryboardSegue) {
+        let profileVC = segue.source as! EditProfileTableViewController
+        self.profileHeaderView.nameLabel.text = "\(String(describing: profileVC.firstNameTextField.text)) \(String(describing: profileVC.lastNameTextField.text))"
+        self.profileHeaderView.handleLabel.text = profileVC.userNameTextField.text
+        //userNameTextField.text = profileVC.blogger?.displayName
         
+    }
 private func configureTableView() {
     profileTableView.tableHeaderView = profileHeaderView
     profileTableView.dataSource = self

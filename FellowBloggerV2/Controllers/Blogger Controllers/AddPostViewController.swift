@@ -88,7 +88,7 @@ class AddPostViewController: UIViewController {
             if let error = error {
                 print("fail to post iamge with error: \(error.localizedDescription)")
                     } else if let imageURL = imageURL {
-            print("image posted and recieved imageURL - post dish to database: \(imageURL)")
+                print("image posted and recieved imageURL - post blog to database: \(imageURL)")
                 let blog = Blog(createdDate: Date.getISOTimestamp(), bloggerId: user.uid, imageURL: imageURL.absoluteString, blogDescription: blogDescription,documentId: docRef.documentID)
         DBService.postBlog(blog: blog)
             if let error = error {

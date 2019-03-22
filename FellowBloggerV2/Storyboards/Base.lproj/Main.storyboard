@@ -55,7 +55,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="j1P-c7-xAX">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="BlogCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BlogCell" id="X4H-V6-ZxJ" customClass="BlogCell" customModule="FellowBloggerV2" customModuleProvider="target">
@@ -122,13 +122,16 @@
                                 <rect key="frame" x="0.0" y="120" width="375" height="498"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="zUK-01-239" customClass="BlogCell" customModule="FellowBloggerV2" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="SearchCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchCell" id="zUK-01-239" customClass="SearchCell" customModule="FellowBloggerV2" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zUK-01-239" id="m1p-rs-UmE">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Ob3-g8-H99" kind="presentation" identifier="Show Blogger Profile" id="1xE-hn-gbv"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -146,10 +149,14 @@
                         <viewLayoutGuide key="safeArea" id="kN9-L5-umI"/>
                     </view>
                     <navigationItem key="navigationItem" title="Search" id="et3-Bh-MTe"/>
+                    <connections>
+                        <outlet property="profileSearchBar" destination="Wdj-NM-SzG" id="hNq-pw-hRl"/>
+                        <outlet property="searchProfileTableView" destination="o35-Sl-h7Q" id="xxI-2a-Yxt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ype-bl-DsJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1849" y="45"/>
+            <point key="canvasLocation" x="1705" y="50"/>
         </scene>
         <!--Blog Feed-->
         <scene sceneID="O5y-Ti-15W">
@@ -216,7 +223,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QvC-UW-WTT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1849" y="-803"/>
+            <point key="canvasLocation" x="1705" y="-804"/>
         </scene>
         <!--Add Post-->
         <scene sceneID="FZo-oa-gST">
@@ -270,7 +277,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6cv-va-IGw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3840.8000000000002" y="-1225.6371814092954"/>
+            <point key="canvasLocation" x="4537" y="-1226"/>
         </scene>
         <!--Post Detail View Controller-->
         <scene sceneID="yRU-6m-sxh">
@@ -350,7 +357,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DFA-Pa-Oun" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2936.8000000000002" y="-531.18440779610194"/>
+            <point key="canvasLocation" x="2695" y="-803"/>
         </scene>
         <!--Edit Post-->
         <scene sceneID="RDM-8i-S5t">
@@ -401,7 +408,7 @@
         <!--Edit Bio-->
         <scene sceneID="uzF-Lh-Oct">
             <objects>
-                <viewController id="HHK-rB-qx7" sceneMemberID="viewController">
+                <viewController id="HHK-rB-qx7" customClass="EditBioViewController" customModule="FellowBloggerV2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xZH-ap-mVi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -424,10 +431,19 @@
                         <viewLayoutGuide key="safeArea" id="KwM-ps-Sm7"/>
                     </view>
                     <navigationItem key="navigationItem" title="Edit Bio" id="96b-b7-vUt">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="GvN-WB-GLF"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="GvN-WB-GLF">
+                            <connections>
+                                <action selector="saveButtonPressed:" destination="HHK-rB-qx7" id="Xo1-jf-wgI"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="bioTextView" destination="BB6-zK-B2D" id="4v1-gO-Awc"/>
+                        <segue destination="PwM-jm-zbv" kind="unwind" identifier="Edit Bio" unwindAction="unwindFromEditProfileViewWithSegue:" id="IL0-re-D4r"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pcw-IJ-dd6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="PwM-jm-zbv" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2655" y="-2464"/>
         </scene>
@@ -447,7 +463,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SlW-3R-Skf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2901.5999999999999" y="-1225.6371814092954"/>
+            <point key="canvasLocation" x="3686" y="-1226"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7aK-Nk-C2O">
@@ -548,7 +564,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lmo-fv-k2r">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lmo-fv-k2r">
                                                     <rect key="frame" x="160" y="6" width="215" height="31.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="215" id="s4g-Rd-CnI"/>
@@ -585,7 +601,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tea-ct-oPD">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tea-ct-oPD">
                                                     <rect key="frame" x="160" y="8" width="215" height="32"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="215" id="VOn-HY-59S"/>
@@ -612,7 +628,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zDh-pc-zt5">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zDh-pc-zt5">
                                                     <rect key="frame" x="160" y="7" width="215" height="32"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="215" id="iGp-HS-jZx"/>
@@ -674,7 +690,7 @@
                                         </tableViewCellContentView>
                                         <color key="tintColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
-                                            <segue destination="HHK-rB-qx7" kind="show" id="x7N-IR-Fi6"/>
+                                            <segue destination="HHK-rB-qx7" kind="show" identifier="" id="x7N-IR-Fi6"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -705,9 +721,11 @@
                         <outlet property="lastNameTextField" destination="tea-ct-oPD" id="jPa-RB-4sN"/>
                         <outlet property="profileImageButton" destination="jn0-Gu-2jl" id="dq4-6T-LWT"/>
                         <outlet property="userNameTextField" destination="zDh-pc-zt5" id="BME-KD-UVC"/>
+                        <segue destination="S0c-qf-myg" kind="unwind" identifier="Edit Profile" unwindAction="unwindFromEditProfileViewWithSegue:" id="5cN-Re-dqc"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4JK-WO-8TB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="S0c-qf-myg" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1704.8" y="-2464.3178410794603"/>
         </scene>
@@ -718,5 +736,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="5E4-a8-Z3f"/>
+        <segue reference="1xE-hn-gbv"/>
     </inferredMetricsTieBreakers>
 </document>

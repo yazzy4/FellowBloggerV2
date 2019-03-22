@@ -21,6 +21,8 @@
 		910D1F02223AC0B60090B2BB /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910D1F01223AC0B60090B2BB /* Date+Extension.swift */; };
 		910D1F04223AC0D40090B2BB /* String+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910D1F03223AC0D40090B2BB /* String+Date.swift */; };
 		910D1F06223AC2830090B2BB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 910D1F05223AC2810090B2BB /* GoogleService-Info.plist */; };
+		915C6ECA22449EC800CFCA87 /* SearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 915C6EC922449EC800CFCA87 /* SearchCell.xib */; };
+		915C6ECC22449F4E00CFCA87 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915C6ECB22449F4E00CFCA87 /* SearchCell.swift */; };
 		91A0982C224409EF0042B6A3 /* EditProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A0982B224409EF0042B6A3 /* EditProfileTableViewController.swift */; };
 		91ACEF442242AB8E009B6D56 /* EditBioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91ACEF432242AB8E009B6D56 /* EditBioViewController.swift */; };
 		91AF07D8223AED1000E487B8 /* LoginView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91AF07D7223AED1000E487B8 /* LoginView.storyboard */; };
@@ -59,6 +61,8 @@
 		910D1F01223AC0B60090B2BB /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		910D1F03223AC0D40090B2BB /* String+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Date.swift"; sourceTree = "<group>"; };
 		910D1F05223AC2810090B2BB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		915C6EC922449EC800CFCA87 /* SearchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchCell.xib; sourceTree = "<group>"; };
+		915C6ECB22449F4E00CFCA87 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		91A0982B224409EF0042B6A3 /* EditProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewController.swift; sourceTree = "<group>"; };
 		91ACEF432242AB8E009B6D56 /* EditBioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBioViewController.swift; sourceTree = "<group>"; };
 		91AF07D7223AED1000E487B8 /* LoginView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginView.storyboard; sourceTree = "<group>"; };
@@ -231,6 +235,8 @@
 		91AF07EF223C134F00E487B8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				915C6EC922449EC800CFCA87 /* SearchCell.xib */,
+				915C6ECB22449F4E00CFCA87 /* SearchCell.swift */,
 				91AF07FF223C280600E487B8 /* BlogCell.swift */,
 				91AF07F2223C1AB600E487B8 /* BlogCell.xib */,
 				91AF07F4223C1B3200E487B8 /* IBDesignableView.swift */,
@@ -317,6 +323,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				915C6ECA22449EC800CFCA87 /* SearchCell.xib in Resources */,
 				91AF07F3223C1AB600E487B8 /* BlogCell.xib in Resources */,
 				910D1EEC223ABB7A0090B2BB /* LaunchScreen.storyboard in Resources */,
 				910D1F06223AC2830090B2BB /* GoogleService-Info.plist in Resources */,
@@ -407,6 +414,7 @@
 				91AF07F5223C1B3200E487B8 /* IBDesignableView.swift in Sources */,
 				910D1EF8223ABFD00090B2BB /* AuthService.swift in Sources */,
 				910D1EFA223ABFE60090B2BB /* DBService.swift in Sources */,
+				915C6ECC22449F4E00CFCA87 /* SearchCell.swift in Sources */,
 				91AF07DD223BF08F00E487B8 /* UIAlertExtentions.swift in Sources */,
 				91AF07EC223C130E00E487B8 /* ProfileViewController.swift in Sources */,
 				91A0982C224409EF0042B6A3 /* EditProfileTableViewController.swift in Sources */,
