@@ -55,7 +55,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="j1P-c7-xAX">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="BlogCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="BlogCell" id="X4H-V6-ZxJ" customClass="BlogCell" customModule="FellowBloggerV2" customModuleProvider="target">
@@ -122,15 +122,55 @@
                                 <rect key="frame" x="0.0" y="120" width="375" height="498"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="SearchCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchCell" id="zUK-01-239" customClass="SearchCell" customModule="FellowBloggerV2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="SearchCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchCell" rowHeight="176" id="zUK-01-239" customClass="SearchCell" customModule="FellowBloggerV2" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="176"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zUK-01-239" id="m1p-rs-UmE">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="175.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-image" translatesAutoresizingMaskIntoConstraints="NO" id="3KY-Zl-LDL" customClass="CircularImageView" customModule="FellowBloggerV2" customModuleProvider="target">
+                                                    <rect key="frame" x="15" y="24" width="100" height="100"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="100" id="Imy-77-TUN"/>
+                                                        <constraint firstAttribute="width" constant="100" id="z4F-2b-lwv"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full name " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sXk-SN-FYB">
+                                                    <rect key="frame" x="131" y="24" width="213" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="4Fs-g5-4Ey"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oyk-zZ-sIG">
+                                                    <rect key="frame" x="131" y="84" width="213" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="pep-QU-XUH"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="oyk-zZ-sIG" firstAttribute="bottom" secondItem="3KY-Zl-LDL" secondAttribute="bottom" id="7ek-ve-E5R"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="oyk-zZ-sIG" secondAttribute="trailing" constant="16" id="8ZV-OT-E5W"/>
+                                                <constraint firstItem="3KY-Zl-LDL" firstAttribute="leading" secondItem="m1p-rs-UmE" secondAttribute="leadingMargin" id="EaG-2g-YyS"/>
+                                                <constraint firstItem="3KY-Zl-LDL" firstAttribute="top" secondItem="sXk-SN-FYB" secondAttribute="top" id="Hzh-NG-lNr"/>
+                                                <constraint firstItem="sXk-SN-FYB" firstAttribute="leading" secondItem="3KY-Zl-LDL" secondAttribute="trailing" constant="16" id="QGG-hT-egd"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="sXk-SN-FYB" secondAttribute="trailing" constant="16" id="REr-07-CP8"/>
+                                                <constraint firstItem="oyk-zZ-sIG" firstAttribute="leading" secondItem="3KY-Zl-LDL" secondAttribute="trailing" constant="16" id="fC0-2D-dWF"/>
+                                                <constraint firstItem="sXk-SN-FYB" firstAttribute="top" secondItem="m1p-rs-UmE" secondAttribute="topMargin" constant="13" id="ria-d6-DMg"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Ob3-g8-H99" kind="presentation" identifier="Show Blogger Profile" id="1xE-hn-gbv"/>
+                                            <outlet property="bloggerNameLabel" destination="sXk-SN-FYB" id="6As-F6-uMc"/>
+                                            <outlet property="bloggerSearchImageView" destination="3KY-Zl-LDL" id="xPC-gP-ePL"/>
+                                            <outlet property="bloggerUsernameLabel" destination="oyk-zZ-sIG" id="l2y-v2-byA"/>
+                                            <segue destination="Ob3-g8-H99" kind="show" identifier="Show Blogger Profile" id="nUH-pJ-odM"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -156,7 +196,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ype-bl-DsJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1705" y="50"/>
+            <point key="canvasLocation" x="1704.8" y="49.925037481259373"/>
         </scene>
         <!--Blog Feed-->
         <scene sceneID="O5y-Ti-15W">
@@ -416,7 +456,6 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="BB6-zK-B2D">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -735,7 +774,7 @@
         <image name="placeholder-image" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5E4-a8-Z3f"/>
-        <segue reference="1xE-hn-gbv"/>
+        <segue reference="gKg-ds-bRn"/>
+        <segue reference="nUH-pJ-odM"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -38,7 +38,7 @@ class ProfileViewController: UIViewController {
         }
     }
 //private var bloggers = [Blogger]()
-    public var blogger: Blogger?
+public var blogger: Blogger?
     
 override func viewWillAppear(_ animated: Bool) {
 super.viewWillAppear(true)

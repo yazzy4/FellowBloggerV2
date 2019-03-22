@@ -11,9 +11,7 @@ import UIKit
 class SearchCell: UITableViewCell {
 
     @IBOutlet weak var bloggerSearchImageView: CircularImageView!
-    
     @IBOutlet weak var bloggerNameLabel: UILabel!
-    
     @IBOutlet weak var bloggerUsernameLabel: UILabel!
     
 

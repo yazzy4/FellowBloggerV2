@@ -52,11 +52,6 @@
                     <constraint firstAttribute="trailingMargin" secondItem="dZZ-rn-RUX" secondAttribute="trailing" constant="13" id="m8i-BI-KVA"/>
                 </constraints>
             </tableViewCellContentView>
-            <connections>
-                <outlet property="bloggerNameLabel" destination="dZZ-rn-RUX" id="d7K-9P-lYq"/>
-                <outlet property="bloggerSearchImageView" destination="jpf-r4-3Eb" id="wDD-98-tf8"/>
-                <outlet property="bloggerUsernameLabel" destination="JE3-Ec-d2b" id="qsd-S3-cUF"/>
-            </connections>
             <point key="canvasLocation" x="204.80000000000001" y="145.72713643178412"/>
         </tableViewCell>
     </objects>

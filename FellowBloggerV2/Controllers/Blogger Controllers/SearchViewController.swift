@@ -15,13 +15,13 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var searchProfileTableView: UITableView!
     @IBOutlet weak var profileSearchBar: UISearchBar!
     
-    public var blogs = [Blog]() {
-        didSet {
-            DispatchQueue.main.async {
-                self.searchProfileTableView.reloadData()
-            }
-        }
-    }
+    public var blogs = [Blog]() //{
+//        didSet {
+//            DispatchQueue.main.async {
+//                self.searchProfileTableView.reloadData()
+//            }
+//        }
+//    }
     
     public var bloggers = [Blogger]() {
         didSet {
@@ -44,7 +44,6 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         searchProfileTableView.dataSource = self
         searchProfileTableView.delegate = self
-        searchProfileTableView.register(UINib(nibName: "SearchCell", bundle: nil), forCellReuseIdentifier: "SearchCell")
         profileSearchBar.delegate = self
         fetchBloggers()
     }
@@ -55,7 +54,7 @@ class SearchViewController: UIViewController {
             .collection(BloggersCollectionKeys.CollectionKey)
             .addSnapshotListener { [weak self] (snapshot, error) in
                 if let error = error {
-                    print("failed to fetch blogs with error: \(error.localizedDescription)")
+                    print("failed to fetch blog with error: \(error.localizedDescription)")
                 } else if let snapshot = snapshot {
                     self?.bloggers = snapshot.documents.map { Blogger(dict: $0.data()) }
                         .sorted { $0.bloggerId > $1.bloggerId }
@@ -65,6 +64,22 @@ class SearchViewController: UIViewController {
                 }
         }
     }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "Show Blogger Profile" {
+//            guard let indexPath = sender as? IndexPath,
+//                let cell = searchProfileTableView.cellForRow(at: indexPath) as? SearchCell,
+//                let profileVC = segue.destination as? ProfileViewController else {
+//                    fatalError("cannot segue to profileVC")
+//            }
+//            let profile = bloggers[indexPath.row]
+//           profileVC.blogger.
+//            //blogDVC.displayName = cell.blogDescriptionLabel.text
+//            profileVC.blogger = profile
+//
+//        }
+//
+//    }
 }
 
 extension SearchViewController: UITableViewDataSource {
@@ -73,7 +88,9 @@ extension SearchViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = searchProfileTableView.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath)
+       guard let cell = searchProfileTableView.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath) as? SearchCell else {
+            return UITableViewCell()
+        }
         let profileToSet = bloggers[indexPath.row]
         guard let image = URL.init(string: profileToSet.photoURL!) else { return UITableViewCell()}
         do {
@@ -82,9 +99,9 @@ extension SearchViewController: UITableViewDataSource {
         } catch {
             print(error)
         }
-        cell.textLabel?.text = profileToSet.fullName
-        cell.detailTextLabel?.text = profileToSet.displayName
-        //cell.imageView?.image = profileToSet.photoURL!
+        cell.bloggerNameLabel.text = profileToSet.fullName
+        cell.bloggerUsernameLabel.text = profileToSet.displayName
+        cell.bloggerSearchImageView.kf.setImage(with: URL(string: profileToSet.photoURL ?? "no image available"))
         return cell
     }
     
