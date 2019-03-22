@@ -84,17 +84,25 @@ private func updateProfileUI() {
                 }
             }
     } else {
-        //get blogger info from blogger.id
+        DBService.fetchBlogCreator(userId: blogger?.bloggerId ?? "no blogger profile") { [weak self] (error, blogger) in
+            if let _ = error {
+                self?.showAlert(title: "Error fetching account info", message: error?.localizedDescription)
+            } else if let blogger = blogger {
+                self?.profileHeaderView.handleLabel.text = "@" + (blogger.displayName )
+                self?.profileHeaderView.nameLabel.text = blogger.fullName
+                guard let photoURL = blogger.photoURL,
+                    !photoURL.isEmpty else {
+                        return
+                }
+                
+        self?.profileHeaderView.coverPhoto.kf.setImage(with: URL(string: blogger.coverImageURL ?? "no image"), for: .normal )
+        self?.profileHeaderView.bloggerImageView.kf.setImage(with: URL(string: blogger.photoURL ?? "no image"), for: .normal)
+            }
+        }
     }
     
 }
     private func fetchUserBlogs(){
-        if bloggerSelected == false {
-            guard let _ = authservice.getCurrentUser() else {
-                print("no logged user")
-                return
-            }
-        
         if bloggerSelected == false {
         guard let user = authservice.getCurrentUser() else {
             print("no logged user")
@@ -111,10 +119,21 @@ private func updateProfileUI() {
                         .sorted { $0.createdDate.date() > $1.createdDate.date() }        }
                 }
         } else {
-            //user blogger.id to get blogs
+            let _ = DBService.firestoreDB
+                .collection(BlogsCollectionKeys.CollectionKey)
+                .whereField(BlogsCollectionKeys.BloggerIdKey, isEqualTo: blogger?.bloggerId ?? "no blogger profile")
+                .addSnapshotListener { [weak self] (snapshot, error) in
+                    if let error = error {
+                        self?.showAlert(title: "Error fetching dishes", message: error.localizedDescription)
+                    } else if let snapshot = snapshot {
+                        self?.blogs = snapshot.documents.map { Blog(dict: $0.data()) }
+                            .sorted { $0.createdDate.date() > $1.createdDate.date() }
+                        
+                    }
+                }
             }
         }
-    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Show Edit Profile" {
             guard let navController = segue.destination as? UINavigationController,
@@ -183,6 +202,6 @@ extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return Constants.BlogCellHeight
     }
-}
+    }
 
 

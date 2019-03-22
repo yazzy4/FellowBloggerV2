@@ -47,7 +47,7 @@ class SearchViewController: UIViewController {
         searchProfileTableView.delegate = self
         profileSearchBar.delegate = self
         fetchBloggers()
-        fetchUserBlogs()
+       
         
     }
     
@@ -84,22 +84,7 @@ class SearchViewController: UIViewController {
 
     }
     
-    private func fetchUserBlogs(){
-        guard let blogger = authservice.getCurrentUser() else {
-            print("no logged user")
-            return
-        }
-        let _ = DBService.firestoreDB
-            .collection(BlogsCollectionKeys.CollectionKey)
-            .whereField(BlogsCollectionKeys.BloggerIdKey, isEqualTo: bloggers.first?.bloggerId ?? "no blog info")
-            .addSnapshotListener { [weak self] (snapshot, error) in
-                if let error = error {
-                    self?.showAlert(title: "Error fetching dishes", message: error.localizedDescription)
-                } else if let snapshot = snapshot {
-                    self?.blogs = snapshot.documents.map { Blog(dict: $0.data()) }
-                        .sorted { $0.createdDate.date() > $1.createdDate.date() }        }
-        }
-    }
+
 }
 
 extension SearchViewController: UITableViewDataSource {
