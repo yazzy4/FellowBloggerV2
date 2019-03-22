@@ -19,6 +19,8 @@ class ProfileViewController: UIViewController {
         return headerView
     }()
     
+    public var bloggerSelected = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         profileTableView.dataSource = self
@@ -39,7 +41,7 @@ class ProfileViewController: UIViewController {
     }
 //private var bloggers = [Blogger]()
 public var blogger: Blogger?
-    
+
 override func viewWillAppear(_ animated: Bool) {
 super.viewWillAppear(true)
     updateProfileUI()
@@ -60,11 +62,13 @@ private func configureTableView() {
     profileTableView.register(UINib(nibName: "BlogCell", bundle: nil), forCellReuseIdentifier: "BlogCell")
         }
 private func updateProfileUI() {
+    if bloggerSelected == false {
         guard let user = authservice.getCurrentUser() else {
             print("no logged user")
             return
         }
-        DBService.fetchBlogCreator(userId: user.uid) { [weak self] (error, blogger) in
+    
+    DBService.fetchBlogCreator(userId: user.uid) { [weak self] (error, blogger) in
             if let _ = error {
                 self?.showAlert(title: "Error fetching account info", message: error?.localizedDescription)
             } else if let blogger = blogger {
@@ -77,13 +81,21 @@ private func updateProfileUI() {
                 
                 self?.profileHeaderView.coverPhoto.kf.setImage(with: URL(string: blogger.coverImageURL ?? "no image"), for: .normal )
         self?.profileHeaderView.bloggerImageView.kf.setImage(with: URL(string: blogger.photoURL ?? "no image"), for: .normal)
+                }
             }
-        }
+    } else {
+        //get blogger info from blogger.id
     }
     
-
-    
+}
     private func fetchUserBlogs(){
+        if bloggerSelected == false {
+            guard let _ = authservice.getCurrentUser() else {
+                print("no logged user")
+                return
+            }
+        
+        if bloggerSelected == false {
         guard let user = authservice.getCurrentUser() else {
             print("no logged user")
             return
@@ -97,9 +109,12 @@ private func updateProfileUI() {
                 } else if let snapshot = snapshot {
                     self?.blogs = snapshot.documents.map { Blog(dict: $0.data()) }
                         .sorted { $0.createdDate.date() > $1.createdDate.date() }        }
+                }
+        } else {
+            //user blogger.id to get blogs
+            }
         }
     }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Show Edit Profile" {
             guard let navController = segue.destination as? UINavigationController,

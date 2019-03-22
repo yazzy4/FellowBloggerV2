@@ -14,15 +14,16 @@ class SearchViewController: UIViewController {
     
     @IBOutlet weak var searchProfileTableView: UITableView!
     @IBOutlet weak var profileSearchBar: UISearchBar!
+    let searchController = UISearchController(searchResultsController: nil)
     
-    public var blogs = [Blog]() //{
-//        didSet {
-//            DispatchQueue.main.async {
-//                self.searchProfileTableView.reloadData()
-//            }
-//        }
-//    }
+    private lazy var profileHeaderView: ProfileHeaderView = {
+        let headerView = ProfileHeaderView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 300))
+        return headerView
+    }()
+
+    public var bloggerSelected = true
     
+    public var blogs = [Blog]()
     public var bloggers = [Blogger]() {
         didSet {
             DispatchQueue.main.async {
@@ -46,6 +47,8 @@ class SearchViewController: UIViewController {
         searchProfileTableView.delegate = self
         profileSearchBar.delegate = self
         fetchBloggers()
+        fetchUserBlogs()
+        
     }
     
     @objc private func fetchBloggers() {
@@ -64,22 +67,39 @@ class SearchViewController: UIViewController {
                 }
         }
     }
+
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "Show Blogger Profile" {
-//            guard let indexPath = sender as? IndexPath,
-//                let cell = searchProfileTableView.cellForRow(at: indexPath) as? SearchCell,
-//                let profileVC = segue.destination as? ProfileViewController else {
-//                    fatalError("cannot segue to profileVC")
-//            }
-//            let profile = bloggers[indexPath.row]
-//           profileVC.blogger.
-//            //blogDVC.displayName = cell.blogDescriptionLabel.text
-//            profileVC.blogger = profile
-//
-//        }
-//
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Show Blogger Profile" {
+            guard let profileVC = segue.destination as? ProfileViewController,
+           let indexPath = searchProfileTableView.indexPathForSelectedRow else {
+                print("crash?")
+                return
+            }
+            let profile = bloggers[indexPath.row]
+            profileVC.blogger = profile
+            profileVC.bloggerSelected = true
+
+        }
+
+    }
+    
+    private func fetchUserBlogs(){
+        guard let blogger = authservice.getCurrentUser() else {
+            print("no logged user")
+            return
+        }
+        let _ = DBService.firestoreDB
+            .collection(BlogsCollectionKeys.CollectionKey)
+            .whereField(BlogsCollectionKeys.BloggerIdKey, isEqualTo: bloggers.first?.bloggerId ?? "no blog info")
+            .addSnapshotListener { [weak self] (snapshot, error) in
+                if let error = error {
+                    self?.showAlert(title: "Error fetching dishes", message: error.localizedDescription)
+                } else if let snapshot = snapshot {
+                    self?.blogs = snapshot.documents.map { Blog(dict: $0.data()) }
+                        .sorted { $0.createdDate.date() > $1.createdDate.date() }        }
+        }
+    }
 }
 
 extension SearchViewController: UITableViewDataSource {
@@ -92,13 +112,7 @@ extension SearchViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         let profileToSet = bloggers[indexPath.row]
-        guard let image = URL.init(string: profileToSet.photoURL!) else { return UITableViewCell()}
-        do {
-            let data = try Data.init(contentsOf: image)
-            cell.imageView?.image = UIImage.init(data: data)
-        } catch {
-            print(error)
-        }
+        
         cell.bloggerNameLabel.text = profileToSet.fullName
         cell.bloggerUsernameLabel.text = profileToSet.displayName
         cell.bloggerSearchImageView.kf.setImage(with: URL(string: profileToSet.photoURL ?? "no image available"))
@@ -121,8 +135,10 @@ extension SearchViewController: UITableViewDelegate {
 extension SearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard let searchText = searchBar.text else { return }
-        bloggers = bloggers.filter { $0.fullName.contains(searchText) }
-        bloggers = bloggers.filter { $0.displayName.contains(searchText) }
+bloggers = bloggers.filter { $0.fullName.contains(searchText) }
+bloggers = bloggers.filter { $0.displayName.contains(searchText) }
         searchBar.resignFirstResponder()
     }
+    
+    
 }
