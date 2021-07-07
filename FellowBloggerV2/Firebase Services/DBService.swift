@@ -9,6 +9,7 @@
 import Foundation
 import FirebaseFirestore
 import Firebase
+
 struct BloggersCollectionKeys {
     static let CollectionKey = "bloggers"
     static let BloggerIdKey = "bloggerId"
@@ -92,6 +93,19 @@ final class DBService {
                 } else if let snapshot = snapshot?.documents.first {
                     let blogCreator = Blogger(dict: snapshot.data())
                     completion(nil, blogCreator)
+                }
+        }
+    }
+    
+    static public func deleteBlog(blog: Blog, completion: @escaping (Error?) -> Void) {
+        DBService.firestoreDB
+            .collection(BlogsCollectionKeys.CollectionKey)
+            .document(blog.documentId)
+            .delete { (error) in
+                if let error = error {
+                    completion(error)
+                } else {
+                    completion(nil)
                 }
         }
     }

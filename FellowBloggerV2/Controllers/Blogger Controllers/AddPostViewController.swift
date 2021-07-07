@@ -84,22 +84,21 @@ class AddPostViewController: UIViewController {
             .collection(BlogsCollectionKeys.CollectionKey)
             .document()
         StorageService.postImage(imageData: imageData,
-                                 imageName: Constants.BlogImagePath + "\(user.uid)/\(docRef.documentID)") { [weak self] (error, imageURL) in
-                                    if let error = error {
-                                        print("fail to post iamge with error: \(error.localizedDescription)")
-                                    } else if let imageURL = imageURL {
-                                        print("image posted and recieved imageURL - post dish to database: \(imageURL)")
-                                        let blog = Blog(createdDate: Date.getISOTimestamp(), bloggerId: user.uid, imageURL: imageURL.absoluteString, blogDescription: blogDescription,
-                                                        documentId: docRef.documentID)
-                                        DBService.postBlog(blog: blog)
-                                            if let error = error {
-                                                self?.showAlert(title: "Posting Blog Error", message: error.localizedDescription)
-                                            } else {
-                                                self?.showAlert(title: "Blog Posted", message: "Looking forward to all of your valuable insights") { action in
-                                                    self?.dismiss(animated: true)
-                                                }
-                                            }
-                                        }
+        imageName: Constants.BlogImagePath + "\(user.uid)/\(docRef.documentID)") { [weak self] (error, imageURL) in
+            if let error = error {
+                print("fail to post iamge with error: \(error.localizedDescription)")
+                    } else if let imageURL = imageURL {
+                print("image posted and recieved imageURL - post blog to database: \(imageURL)")
+                let blog = Blog(createdDate: Date.getISOTimestamp(), bloggerId: user.uid, imageURL: imageURL.absoluteString, blogDescription: blogDescription,documentId: docRef.documentID)
+        DBService.postBlog(blog: blog)
+            if let error = error {
+                self?.showAlert(title: "Posting Blog Error", message: error.localizedDescription)
+                    } else {
+                    self?.showAlert(title: "Blog Posted", message: "Looking forward to all of your valuable insights") { action in
+            self?.dismiss(animated: true)
+                        }
+                    }
+            }
             self?.navigationItem.rightBarButtonItem?.isEnabled = true
             }
         }

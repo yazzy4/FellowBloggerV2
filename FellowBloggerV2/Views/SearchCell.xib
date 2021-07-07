@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="300" id="XLs-xY-5AT" customClass="SearchCell" customModule="FellowBloggerV2" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="500" height="450"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XLs-xY-5AT" id="6SV-jh-aRc">
+                <rect key="frame" x="0.0" y="0.0" width="500" height="449.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-image" translatesAutoresizingMaskIntoConstraints="NO" id="jpf-r4-3Eb" customClass="CircularImageView" customModule="FellowBloggerV2" customModuleProvider="target">
+                        <rect key="frame" x="20" y="160" width="130" height="130"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="130" id="83h-vd-78Q"/>
+                            <constraint firstAttribute="height" constant="130" id="wWJ-8S-gsn"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZZ-rn-RUX">
+                        <rect key="frame" x="210" y="160" width="257" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="E8c-oG-4J8"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JE3-Ec-d2b">
+                        <rect key="frame" x="210" y="230" width="257" height="60"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="JE3-Ec-d2b" firstAttribute="bottom" secondItem="jpf-r4-3Eb" secondAttribute="bottom" id="6TV-jY-CHD"/>
+                    <constraint firstItem="jpf-r4-3Eb" firstAttribute="leading" secondItem="6SV-jh-aRc" secondAttribute="leadingMargin" id="K3f-hq-RHg"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="JE3-Ec-d2b" secondAttribute="trailing" constant="13" id="OZ2-HH-jdb"/>
+                    <constraint firstItem="jpf-r4-3Eb" firstAttribute="centerY" secondItem="6SV-jh-aRc" secondAttribute="centerY" id="Q7M-oI-tRT"/>
+                    <constraint firstItem="JE3-Ec-d2b" firstAttribute="top" secondItem="dZZ-rn-RUX" secondAttribute="bottom" constant="20" id="TBU-2t-xPK"/>
+                    <constraint firstItem="dZZ-rn-RUX" firstAttribute="top" secondItem="jpf-r4-3Eb" secondAttribute="top" id="gsj-43-Rxb"/>
+                    <constraint firstItem="JE3-Ec-d2b" firstAttribute="leading" secondItem="jpf-r4-3Eb" secondAttribute="trailing" constant="60" id="lAS-GW-GSh"/>
+                    <constraint firstItem="dZZ-rn-RUX" firstAttribute="leading" secondItem="jpf-r4-3Eb" secondAttribute="trailing" constant="60" id="lKT-LR-nLw"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="dZZ-rn-RUX" secondAttribute="trailing" constant="13" id="m8i-BI-KVA"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="204.80000000000001" y="145.72713643178412"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="placeholder-image" width="512" height="512"/>
+    </resources>
+</document>

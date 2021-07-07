@@ -14,6 +14,13 @@ class ProfileViewController: UIViewController {
     
     @IBOutlet weak var profileTableView: UITableView!
     
+    private lazy var profileHeaderView: ProfileHeaderView = {
+        let headerView = ProfileHeaderView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 300))
+        return headerView
+    }()
+    
+    public var bloggerSelected = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         profileTableView.dataSource = self
@@ -24,11 +31,6 @@ class ProfileViewController: UIViewController {
         
     }
     
-private lazy var profileHeaderView: ProfileHeaderView = {
-        let headerView = ProfileHeaderView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 300))
-        return headerView
-    }()
-    
     private let authservice = AppDelegate.authservice
     private var blogs = [Blog]() {
         didSet {
@@ -37,13 +39,22 @@ private lazy var profileHeaderView: ProfileHeaderView = {
             }
         }
     }
-private var bloggers = [Blogger]()
-    
+//private var bloggers = [Blogger]()
+public var blogger: Blogger?
+
 override func viewWillAppear(_ animated: Bool) {
 super.viewWillAppear(true)
     updateProfileUI()
         }
+    
+    
+    @IBAction func unwindFromEditProfileView(segue: UIStoryboardSegue) {
+        let profileVC = segue.source as! EditProfileTableViewController
+        self.profileHeaderView.nameLabel.text = "\(String(describing: profileVC.firstNameTextField.text)) \(String(describing: profileVC.lastNameTextField.text))"
+        self.profileHeaderView.handleLabel.text = profileVC.userNameTextField.text
+        //userNameTextField.text = profileVC.blogger?.displayName
         
+    }
 private func configureTableView() {
     profileTableView.tableHeaderView = profileHeaderView
     profileTableView.dataSource = self
@@ -51,28 +62,48 @@ private func configureTableView() {
     profileTableView.register(UINib(nibName: "BlogCell", bundle: nil), forCellReuseIdentifier: "BlogCell")
         }
 private func updateProfileUI() {
+    if bloggerSelected == false {
         guard let user = authservice.getCurrentUser() else {
             print("no logged user")
             return
         }
-        DBService.fetchBlogCreator(userId: user.uid) { [weak self] (error, blogger) in
+    
+    DBService.fetchBlogCreator(userId: user.uid) { [weak self] (error, blogger) in
             if let _ = error {
                 self?.showAlert(title: "Error fetching account info", message: error?.localizedDescription)
             } else if let blogger = blogger {
                 self?.profileHeaderView.handleLabel.text = "@" + (blogger.displayName ?? "no display name")
+                self?.profileHeaderView.nameLabel.text = blogger.fullName
                 guard let photoURL = blogger.photoURL,
                     !photoURL.isEmpty else {
                         return
-                        
                 }
                 
-                self?.profileHeaderView.bloggerImageView.kf.setImage(with: URL(string: photoURL), placeholder: #imageLiteral(resourceName: "placeholder-image"))
-    
+                self?.profileHeaderView.coverPhoto.kf.setImage(with: URL(string: blogger.coverImageURL ?? "no image"), for: .normal )
+        self?.profileHeaderView.bloggerImageView.kf.setImage(with: URL(string: blogger.photoURL ?? "no image"), for: .normal)
+                }
+            }
+    } else {
+        DBService.fetchBlogCreator(userId: blogger?.bloggerId ?? "no blogger profile") { [weak self] (error, blogger) in
+            if let _ = error {
+                self?.showAlert(title: "Error fetching account info", message: error?.localizedDescription)
+            } else if let blogger = blogger {
+                self?.profileHeaderView.handleLabel.text = "@" + (blogger.displayName )
+                self?.profileHeaderView.nameLabel.text = blogger.fullName
+                guard let photoURL = blogger.photoURL,
+                    !photoURL.isEmpty else {
+                        return
+                }
+                
+        self?.profileHeaderView.coverPhoto.kf.setImage(with: URL(string: blogger.coverImageURL ?? "no image"), for: .normal )
+        self?.profileHeaderView.bloggerImageView.kf.setImage(with: URL(string: blogger.photoURL ?? "no image"), for: .normal)
             }
         }
     }
     
+}
     private func fetchUserBlogs(){
+        if bloggerSelected == false {
         guard let user = authservice.getCurrentUser() else {
             print("no logged user")
             return
@@ -86,26 +117,44 @@ private func updateProfileUI() {
                 } else if let snapshot = snapshot {
                     self?.blogs = snapshot.documents.map { Blog(dict: $0.data()) }
                         .sorted { $0.createdDate.date() > $1.createdDate.date() }        }
+                }
+        } else {
+            let _ = DBService.firestoreDB
+                .collection(BlogsCollectionKeys.CollectionKey)
+                .whereField(BlogsCollectionKeys.BloggerIdKey, isEqualTo: blogger?.bloggerId ?? "no blogger profile")
+                .addSnapshotListener { [weak self] (snapshot, error) in
+                    if let error = error {
+                        self?.showAlert(title: "Error fetching dishes", message: error.localizedDescription)
+                    } else if let snapshot = snapshot {
+                        self?.blogs = snapshot.documents.map { Blog(dict: $0.data()) }
+                            .sorted { $0.createdDate.date() > $1.createdDate.date() }
+                        
+                    }
+                }
+            }
         }
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Show Edit Profile" {
             guard let navController = segue.destination as? UINavigationController,
-                let editProfileVC = navController.viewControllers.first as? EditProfileViewController
+                let editProfileVC = navController.viewControllers.first as? EditProfileTableViewController
                 else {
                     fatalError("editProfileVC not found")
             }
-            editProfileVC.coverImage = profileHeaderView.bloggerImageView
-            //editProfileVC.coverImage = profileHeaderView.coverPhoto
-        } else if segue.identifier == "Show Dish Details" {
+        editProfileVC.coverImage =
+            profileHeaderView.bloggerImageView
+        editProfileVC.profileImageButton = profileHeaderView.bloggerImageView
+            editProfileVC.blogger = blogger
+        } else if segue.identifier == "Show Blog Details" {
             guard let indexPath = sender as? IndexPath,
                 let cell = profileTableView.cellForRow(at: indexPath) as? BlogCell,
-                let editDVC = segue.destination as? EditProfileViewController else {
-                    fatalError("cannot segue to dishDVC")
+                let detailDVC = segue.destination as? PostDetailViewController else {
+                    fatalError("cannot segue to editDVC")
             }
-            let blogger = bloggers[indexPath.row]
-            //editDVC.blogger.firstName = cell.fullName
+            let blog = blogs[indexPath.row]
+            detailDVC.blogDescription = cell.blogDescriptionLabel.text
+            detailDVC.blog = blog
+            
         }
     }
     
@@ -123,6 +172,11 @@ extension ProfileViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "BlogCell", for: indexPath) as? BlogCell else {
             fatalError("BlogCell not found")
         }
+        let blog = blogs[indexPath.row]
+        cell.selectionStyle = .none
+        cell.blogDescriptionLabel.text = blog.blogDescription
+        cell.createdAtLabel.text = blog.createdDate
+        cell.postImage.kf.setImage(with: URL(string: blog.imageURL), placeholder: #imageLiteral(resourceName: "placeholder-image"))
    return cell
     
     }
@@ -148,6 +202,6 @@ extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return Constants.BlogCellHeight
     }
-}
+    }
 
 

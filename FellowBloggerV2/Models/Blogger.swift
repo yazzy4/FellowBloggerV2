@@ -9,7 +9,7 @@
 import Foundation
 struct Blogger {
     let bloggerId: String
-    let displayName: String?
+    let displayName: String
     let email: String
     let photoURL: String?
     let coverImageURL: String?
